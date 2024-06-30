@@ -1,0 +1,51 @@
+import React, { lazy } from 'react';
+import Dashboard from '../components/dashboard/dashboard';
+import Dienstplan from '../components/dienstplan/dienstplan';
+import PatientList from '../components/patientenliste/PatientList';
+import PatientenProfil from '../components/patientenprofil/PatientienProfil';
+import Step1 from '../components/Doku/aufnahme/steps/Step1';
+import Step2 from '../components/Doku/aufnahme/steps/Step2';
+import Step3 from '../components/Doku/aufnahme/steps/Step3';
+import Step4 from '../components/Doku/aufnahme/steps/Step4';
+import Step5 from '../components/Doku/aufnahme/steps/Step5';
+import Step6 from '../components/Doku/aufnahme/steps/Step6';
+import Step7 from '../components/Doku/aufnahme/steps/Step7';
+import Step8 from '../components/Doku/aufnahme/steps/Step8';
+import Step9 from '../components/Doku/aufnahme/steps/Step9';
+import Step10 from '../components/Doku/aufnahme/steps/Step10';
+import Step11 from '../components/Doku/aufnahme/steps/Step11';
+import Step12 from '../components/Doku/aufnahme/steps/Step12';
+import Step13 from '../components/Doku/aufnahme/steps/Step13';
+import Step14 from '../components/Doku/aufnahme/steps/Step14';
+import DokumentationPflegeplanungKommunikation from '../components/Doku/aufnahme/DokumentationPflegeplanungKommunikation';
+import DokumentationPflegeplanungMobilitaet from '../components/Doku/aufnahme/DokumentationPflegeplanungMobilitaet';
+// Import other components for different paths
+
+const LoginPage = lazy(() => import('../components/Login/Login'));
+
+const routes = [
+    { path: "/", element: <LoginPage /> },
+    { path: "/dashboard", element: <Dashboard /> },
+    { path: "/step1", element: <Step1 /> }, // Initial step
+    { path: "/step2", element: <Step2 /> },
+    { path: "/step3", element: <Step3 /> },
+    { path: "/step4", element: <Step4 /> },
+    { path: "/step5", element: <Step5 /> },
+    { path: "/step6", element: <Step6 /> },
+    { path: "/step7", element: <Step7 /> },
+    { path: "/step8", element: <Step8 /> },
+    { path: "/step9", element: <Step9 /> },
+    { path: "/step10", element: <Step10 /> },
+    { path: "/step11", element: <Step11 /> },
+    { path: "/step12", element: <Step12 /> },
+    { path: "/step13", element: <Step13 /> }, // Final step
+    { path: "/step14", element: <Step14 /> }, // Final step
+    { path: "/dokumentation_pflegeplanung_kommunikation", element: <DokumentationPflegeplanungKommunikation /> },
+    { path: "/dokumentation_pflegeplanung_mobilitaet", element: <DokumentationPflegeplanungMobilitaet /> },
+    // Add other routes similarly
+    { path: "/dienstplan", element: <Dienstplan /> },
+    { path: "/patientenliste", element: <PatientList /> },
+    { path: "/PatientenProfil/:id", element: <PatientenProfil /> }
+];
+
+export default routes;

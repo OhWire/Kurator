@@ -1,0 +1,58 @@
+/* src/index.css */
+/* src/index.css or src/global.css */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add custom animations for the transitions */
+.fade-enter {
+  @apply opacity-0 scale-90;
+}
+.fade-enter-active {
+  @apply opacity-100 scale-100 transition-opacity transition-transform duration-300;
+}
+.fade-exit {
+  @apply opacity-100 scale-100;
+}
+.fade-exit-active {
+  @apply opacity-0 scale-90 transition-opacity transition-transform duration-300;
+}
+
+
+/* index.css */
+/* index.css */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 97, 97, 0.5);
+  border-radius: 20px;
+  border: 2px solid transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(176, 137, 93);
+}
+
+.custom-scrollbar {
+  scrollbar-width: wide;
+  scrollbar-color: rgb(115, 98, 79) transparent;
+}
+
+.custom-scrollbar:hover {
+  scrollbar-color: rgb(148, 119, 85) transparent;
+}
+
