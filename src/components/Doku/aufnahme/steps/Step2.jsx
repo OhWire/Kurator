@@ -4,139 +4,18 @@ import { Formik, Form, Field, FieldArray } from 'formik';
 
 const initialValues = {
   kriterien: [
-    { name: 'Hören', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Sehen', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Fühlen', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Riechen', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Schmecken', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Sprechen', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Lesen', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Schreiben', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Person', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Raum', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Zeit', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Bewusstseinslage', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Sitzen', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Aufstehen', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Gehen', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Treppensteigen', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Gleichgewicht', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Lagerung', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' },
-    { name: 'Kontrakturenprophylaxe', probleme: '', ressourcen: '', ziele: '', massnahmen: '', scala: '' }
+    { name: 'Allgemeine Lebensgeschichte' },
+    { name: 'Beruflicher Werdegang' },
+    { name: 'Familiäre Situation' },
+    { name: 'Gewohnheiten und Vorlieben' },
+    { name: 'Hobbys und Interessen' },
+    { name: 'Soziale Interaktionen' }
   ]
-};
-
-const TextInputWithButton = ({ field, form, name, index, setFocusedRow }) => {
-  const [value, setValue] = useState(field.value);
-  const [isFocused, setIsFocused] = useState(false);
-
-  const handleSave = () => {
-    form.setFieldValue(name, value);
-    setIsFocused(false);
-    setFocusedRow(null);
-  };
-
-  const handleFocus = () => {
-    setIsFocused(true);
-    setFocusedRow(index);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-    setFocusedRow(null);
-  };
-
-  return (
-    <div className="relative flex items-center">
-      <input
-        type="text"
-        {...field}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        className={`drop-shadow-md font-lato text-sm p-4 rounded-xl text-left align-text-top w-full ${isFocused ? 'h-24' : ''}`}
-      />
-      {isFocused && (
-        <button
-          type="button"
-          onClick={handleSave}
-          className="absolute text-xs right-0 mr-2 bg-custom-dark-gray text-white rounded-md px-2 py-1"
-        >
-          Save
-        </button>
-      )}
-    </div>
-  );
-};
-
-const ProblemInputWithDropdown = ({ field, form, name, index, setFocusedRow }) => {
-  const [value, setValue] = useState(field.value);
-  const [isFocused, setIsFocused] = useState(false);
-
-  const handleSave = () => {
-    form.setFieldValue(name, value);
-    setIsFocused(false);
-    setFocusedRow(null);
-  };
-
-  const handleFocus = () => {
-    setIsFocused(true);
-    setFocusedRow(index);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-    setFocusedRow(null);
-  };
-
-  const handleSelectChange = (e) => {
-    const newValue = e.target.value;
-    setValue(newValue);
-    form.setFieldValue(name, newValue);
-    if (newValue === 'No problems') {
-      setIsFocused(false);
-      setFocusedRow(null);
-    }
-  };
-
-  return (
-    <div className="relative flex items-center">
-      <input
-        type="text"
-        {...field}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        className={`drop-shadow-md font-lato text-sm p-4 rounded-xl text-left align-text-top w-full ${isFocused ? 'h-24' : ''}`}
-      />
-      {isFocused && (
-        <select
-          value={value}
-          onChange={handleSelectChange}
-          className="absolute right-0 mr-12 bg-custom-dark-gray text-white rounded-md px-2 py-1 cursor-pointer"
-        >
-          <option value="">Select...</option>
-          <option value="No problems">No problems</option>
-        </select>
-      )}
-      {isFocused && (
-        <button
-          type="button"
-          onClick={handleSave}
-          className="absolute text-xs right-0 mr-2 bg-custom-dark-gray text-white rounded-md px-2 py-1"
-        >
-          Save
-        </button>
-      )}
-    </div>
-  );
 };
 
 const Step2 = () => {
   const navigate = useNavigate();
-  const [focusedRow, setFocusedRow] = useState(null);
+  const [activeField, setActiveField] = useState(null);
 
   return (
     <Formik
@@ -146,12 +25,12 @@ const Step2 = () => {
         navigate('/step3');
       }}
     >
-      {({ values, setFieldValue }) => (
+      {({ values }) => (
         <Form className="flex flex-col w-full h-full z-20">
           <div className="flex h-[15%] justify-between items-center">
             <div className="flex p-10 py-16">
               <h2 className="text-4xl font-fjalla p-6">
-                Pflegeplanung<span className="text-xl">_Kommunikation/Orientierung</span>
+                Biographie<span className="text-xl"></span>
               </h2>
             </div>
           </div>
@@ -160,77 +39,25 @@ const Step2 = () => {
               <FieldArray name="kriterien">
                 {({ form }) => (
                   <div className="flex flex-col w-full space-y-4">
-                    <div className="grid grid-cols-7 gap-2 items-center">
-                      <div className="text-xl text-center font-fjalla">Kriterium</div>
-                      <div className="text-xl text-center font-fjalla">Probleme</div>
-                      <div className="text-xl text-center font-fjalla">Ressourcen</div>
-                      <div className="text-xl text-center font-fjalla">Ziele</div>
-                      <div className="text-xl text-center font-fjalla">Maßnahmen</div>
-                      <div className="text-xl text-center font-fjalla">Bewertung</div>
+                    <div className="grid grid-cols-1 gap-2 items-center">
                     </div>
                     {form.values.kriterien.map((_, index) => (
-                      <div key={index} className={`grid grid-cols-7 gap-2 items-center ${focusedRow === index ? 'h-24' : 'h-16'}`}>
-                        <Field
-                          name={`kriterien[${index}].name`}
-                          placeholder="Kriterium"
-                          className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-gray-200"
-                          disabled
-                        />
-                        <Field
-                          name={`kriterien[${index}].probleme`}
-                          component={ProblemInputWithDropdown}
-                          form={form}
-                          field={form.getFieldProps(`kriterien[${index}].probleme`)}
-                          index={index}
-                          setFocusedRow={setFocusedRow}
-                        />
-                        <Field
-                          name={`kriterien[${index}].ressourcen`}
-                          component={TextInputWithButton}
-                          form={form}
-                          field={form.getFieldProps(`kriterien[${index}].ressourcen`)}
-                          index={index}
-                          setFocusedRow={setFocusedRow}
-                        />
-                        <Field
-                          name={`kriterien[${index}].ziele`}
-                          component={TextInputWithButton}
-                          form={form}
-                          field={form.getFieldProps(`kriterien[${index}].ziele`)}
-                          index={index}
-                          setFocusedRow={setFocusedRow}
-                        />
-                        <Field
-                          name={`kriterien[${index}].massnahmen`}
-                          component={TextInputWithButton}
-                          form={form}
-                          field={form.getFieldProps(`kriterien[${index}].massnahmen`)}
-                          index={index}
-                          setFocusedRow={setFocusedRow}
-                        />
-                        <div className="flex ml-6 space-x-1">
-                          {[...Array(10).keys()].map(i => (
-                            <label key={i + 1} className="flex items-center space-x-1">
-                              <Field
-                                type="radio"
-                                name={`kriterien[${index}].scala`}
-                                value={`${i + 1}`}
-                                className="hidden"
-                                onClick={() => {
-                                  const updatedKriterien = [...values.kriterien];
-                                  updatedKriterien[index].scala = `${i + 1}`;
-                                  setFieldValue("kriterien", updatedKriterien);
-                                }}
-                              />
-                              <span className={`block w-4 h-4 border-2 border-custom-light-gray rounded-full cursor-pointer ${values.kriterien[index].scala && parseInt(values.kriterien[index].scala) >= (i + 1) ? 'bg-custom-dark-gray' : ''}`} />
-                            </label>
-                          ))}
+                      <div key={index} className="flex flex-col items-center gap-2">
+                        <div
+                          className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-gray-200 w-full cursor-pointer"
+                          onClick={() => setActiveField(activeField === index ? null : index)}
+                        >
+                          {form.values.kriterien[index].name}
                         </div>
-                        <div>
-                          {values.kriterien[index].scala && (
-                            <span className="flex w-full justify-end text-sm font-bold">{values.kriterien[index].scala}</span>
-                          )}
-                        </div>
+                        {activeField === index && (
+                          <Field
+                            name={`kriterien[${index}].details`}
+                            placeholder="Geben Sie Details ein"
+                            className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-white w-full"
+                            component="textarea"
+                            rows="4"
+                          />
+                        )}
                       </div>
                     ))}
                   </div>
