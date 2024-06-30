@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaHandHoldingMedical, FaBars, FaTimes, FaBarsStaggered } from "react-icons/fa6"; // Added FaBars and FaTimes
+import { FaHandHoldingMedical, FaBars, FaBarsStaggered } from "react-icons/fa6"; // Added FaBars and FaTimes
 import { Link, useLocation } from 'react-router-dom';
 import { CiHome, CiSearch, CiUser } from "react-icons/ci";
 import { MdExplore } from "react-icons/md";
@@ -31,7 +31,7 @@ const Navbar = () => {
           </button>
         </Link>
         <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}> {/* Toggle button for small screens */}
-          {isMenuOpen ? <FaTimes className='w-6 h-6' /> : <FaBarsStaggered className='w-6 h-6' />} {/* FaTimes when open, FaBars when closed */}
+          {isMenuOpen ? <FaBars className='w-6 h-6' /> : <FaBarsStaggered className='w-6 h-6' />} {/* FaTimes when open, FaBars when closed */}
         </button>
       </div>
       <div className={`flex flex-col space-y-4 justify-center items-center w-full h-full ${isMenuOpen ? 'h-screen' : ''} md:pt-4 md:space-y-6`}>
