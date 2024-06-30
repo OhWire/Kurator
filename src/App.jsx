@@ -11,7 +11,7 @@ function App() {
         {/* Outer Navbar Container */}
         <div className="flex min-w-16 h-full justify-center items-center bg-white z-10">
           {/* Inner Navbar Container */}
-          <div className="flex sm:w-[calc(100%-1rem)] sm:h-[calc(100%-2rem)] relative overflow-visible">
+          <div className="flex sm:w-[calc(100%-1rem)] sm:h-[calc(100%-2rem)] relative overflow-visible rounded-xl">
             <Navbar />
           </div>
         </div>
