@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
+import { useDispatch } from 'react-redux';
+import { saveStep4Data } from '../state/actions';
 
 const initialValues = {
   categories: [
@@ -13,13 +15,14 @@ const initialValues = {
 
 const Step4 = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [focusedRow, setFocusedRow] = useState(null);
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(saveStep4Data(values))
         navigate('/step5');
       }}
     >
@@ -28,7 +31,7 @@ const Step4 = () => {
           <div className="flex h-[15%] justify-between items-center">
             <div className="flex p-10 py-16">
               <h2 className="text-4xl font-fjalla p-6">
-                Pflegeplanung<span className="text-xl">_Kriterien</span>
+                Pflegeplanung<span className="text-xl">Ressourcen und Fähigkeiten</span>
               </h2>
             </div>
           </div>
@@ -47,7 +50,7 @@ const Step4 = () => {
                         <Field
                           name={`categories[${index}].name`}
                           placeholder="Kategorie"
-                          className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-gray-200"
+                          className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35"
                           disabled
                         />
                         <div className="flex items-center space-x-1">
@@ -71,7 +74,7 @@ const Step4 = () => {
                         <Field
                           name={`categories[${index}].details`}
                           placeholder="Geben Sie Details ein"
-                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-gray-200 w-full"
+                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-custom-light-gray bg-opacity-35 px-6 w-full"
                           component="textarea"
                           rows="4"
                         />

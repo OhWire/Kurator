@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
+import { useDispatch } from 'react-redux'; // Import useDispatch
+import { saveStep2Data } from '../state/actions';
 
 const initialValues = {
   diagnoses: '',
   medications: [{ name: '', dose: '', frequency: '', duration: '' }],
-  allergies: [{
-    type: '',
-    details: '',
-    intensity: '',
-    treatment: ''
-  }],
+  allergies: [{ type: '', details: '', intensity: '', treatment: '' }],
   importantInfo: '',
   therapies: ''
 };
@@ -19,19 +16,20 @@ const medicationOptions = ['Medikament A', 'Medikament B', 'Medikament C'];
 const doseOptions = ['1mg', '5mg', '10mg'];
 const frequencyOptions = ['1x täglich', '2x täglich', '3x täglich'];
 const durationOptions = ['1 Woche', '1 Monat', '3 Monate'];
-const allergyOptions = ['Heuschnupfen', 'Hausstaubmilbenallergie', 'Tierallergie', 'Nesselsucht', 'Sonnenallergie', 'Kontaktallergie', 'Schimmelallergie', 'kreuzallergien', 'insektengiftallergie', 'nahrungsmittelallergie', 'histamin', 'berufsbedingte allergien'];
+const allergyOptions = ['Heuschnupfen', 'Hausstaubmilbenallergie', 'Tierallergie', 'Nesselsucht', 'Sonnenallergie', 'Kontaktallergie', 'Schimmelallergie', 'Kreuzallergien', 'Insektengiftallergie', 'Nahrungsmittelallergie', 'Histamin', 'Berufsbedingte Allergien'];
 const animalOptions = ['Katzen', 'Hunde', 'Pferde', 'Nagetiere'];
 const intensityOptions = ['Leicht', 'Mittel', 'Schwer'];
 
 const Step2 = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // Create dispatch function
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        console.log(values);
-        navigate('/step3');
+        dispatch(saveStep2Data(values)); // Save data to global state
+        navigate('/step3'); // Navigate to the next page
       }}
     >
       {({ values }) => (
@@ -47,7 +45,7 @@ const Step2 = () => {
             <div className="flex w-[95%] h-full bg-custom-light-gray bg-opacity-25 rounded-xl p-4 overflow-y-scroll custom-scrollbar">
               <div className="flex flex-col w-full space-y-4">
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-2xl  font-thin ">Aktuelle Diagnosen</h3>
+                  <h3 className="text-2xl font-thin ">Aktuelle Diagnosen</h3>
                   <Field
                     name="diagnoses"
                     placeholder="Geben Sie Diagnosen ein"
@@ -57,7 +55,7 @@ const Step2 = () => {
                   />
                 </div>
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-2xl  font-thin ">Medikamente</h3>
+                  <h3 className="text-2xl font-thin ">Medikamente</h3>
                   <FieldArray name="medications">
                     {({ form, push, remove }) => (
                       <>
