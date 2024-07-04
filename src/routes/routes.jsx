@@ -19,6 +19,7 @@ import Step13 from '../components/Doku/aufnahme/steps/Step13';
 import Step14 from '../components/Doku/aufnahme/steps/Step14';
 import DokumentationPflegeplanungKommunikation from '../components/Doku/aufnahme/DokumentationPflegeplanungKommunikation';
 import DokumentationPflegeplanungMobilitaet from '../components/Doku/aufnahme/DokumentationPflegeplanungMobilitaet';
+import Register from '../components/Register/register';
 // Import other components for different paths
 
 const LoginPage = lazy(() => import('../components/Login/Login'));
@@ -45,7 +46,8 @@ const routes = [
     // Add other routes similarly
     { path: "/dienstplan", element: <Dienstplan /> },
     { path: "/patientenliste", element: <PatientList /> },
-    { path: "/PatientenProfil/:id", element: <PatientenProfil /> }
+    { path: "/PatientenProfil/:id", element: <PatientenProfil /> },
+    { path: "/register", element: <Register /> },
 ];
 
 export default routes;
