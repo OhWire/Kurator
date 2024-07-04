@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from "axios";
-
-
+import axios from 'axios';
 
 const initialValues = {
   evaluation: [
@@ -28,7 +26,6 @@ const Step7 = () => {
   const step6Data = useSelector((state) => state.step6Data);
   const dispatch = useDispatch();
 
-
   const handleSubmit = (values) => {
     const completeData = {
       ...step1Data,
@@ -45,11 +42,10 @@ const Step7 = () => {
     axios.post('http://localhost:5000/api/patients', completeData)
       .then(response => {
         setShowPopup(true);
-        
       })
       .catch(error => {
         console.error('Fehler beim Speichern der Patientendaten:', error);
-        console.log(completeData)
+        console.log(completeData);
       });
   };
 
@@ -93,7 +89,7 @@ const Step7 = () => {
                           placeholder="Verantwortlich"
                           className="drop-shadow-md font-lato text-md text-center p-4 rounded-xl bg-custom-light-gray bg-opacity-35 w-full"
                         />
-                        <Field as="select" name={`evaluation[${index}].frequency`} className="drop-shadow-md font-lato text-md text-center p-4 rounded-xl bg-custom-light-gray bg-opacity-35  w-full">
+                        <Field as="select" name={`evaluation[${index}].frequency`} className="drop-shadow-md font-lato text-md text-center p-4 rounded-xl bg-custom-light-gray bg-opacity-35 w-full">
                           <option value="">Wählen Sie die Häufigkeit</option>
                           {frequencyOptions.map((option, i) => (
                             <option key={i} value={option}>{option}</option>

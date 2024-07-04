@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux'; // Import useDispatch
+import { useDispatch } from 'react-redux';
 import { saveStep1Data } from '../state/actions';
 
 const validationSchema = Yup.object().shape({
@@ -20,12 +20,14 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email('Ungültige Email-Adresse').required('Email ist erforderlich'),
   versicherungsnummer: Yup.string().required('Versicherungsnummer ist erforderlich'),
   notfallkontakt: Yup.string().required('Notfallkontakt ist erforderlich'),
-  notfalltelefon: Yup.string().required('Notfalltelefon ist erforderlich')
+  notfalltelefon: Yup.string().required('Notfalltelefon ist erforderlich'),
+  zimmernummer: Yup.string().required('Zimmernummer ist erforderlich'),
+  aufgabenErledigt: Yup.number().required('Anzahl der erledigten Aufgaben ist erforderlich').min(0, 'Anzahl der erledigten Aufgaben kann nicht negativ sein')
 });
 
 const Step1 = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // Create dispatch function
+  const dispatch = useDispatch();
 
   return (
     <Formik
@@ -44,14 +46,16 @@ const Step1 = () => {
         email: '',
         versicherungsnummer: '',
         notfallkontakt: '',
-        notfalltelefon: ''
+        notfalltelefon: '',
+        zimmernummer: '',
+        aufgabenErledigt: 0,
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         dispatch(saveStep1Data(values));
         resetForm();
         setSubmitting(false);
-        navigate('/step2'); // Navigate to the next page
+        navigate('/step2');
       }}
     >
       {({ isSubmitting }) => (
@@ -187,6 +191,15 @@ const Step1 = () => {
                     />
                     <ErrorMessage name="notfalltelefon" component="div" className="text-red-500 text-sm mt-1" />
                   </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="zimmernummer"
+                      placeholder="Zimmernummer"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="zimmernummer" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  
                 </div>
               </div>
             </div>

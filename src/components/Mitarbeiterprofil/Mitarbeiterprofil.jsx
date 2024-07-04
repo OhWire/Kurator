@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import Biografie from '../patientenprofil/Biografie';
+import Biografie from '../patientenprofil/_MedInfo/Biografie';
 import Granny from '../img/Granny1.jpeg';
-import Checklist from '../patientenprofil/Checklist';
+import Checklist from '../patientenprofil/_MedInfo/Checklist';
 import employeeData from "./employeeData.json"
 import Qualifikationen from './Qualifikationen';
 import Kontakt from './Kontakt';
