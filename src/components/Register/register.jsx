@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -18,6 +19,8 @@ const Register = () => {
     });
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -35,6 +38,7 @@ const Register = () => {
       console.error('Error:', error.response?.data || error.message);
       alert('Registrierung fehlgeschlagen! Bitte versuchen Sie es erneut.');
     }
+    navigate('/confirm');
   };
 
   return (
