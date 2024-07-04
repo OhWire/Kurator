@@ -3,17 +3,19 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
-    <div className="flex flex-col w-full h-full px-6 py-12 justify-center items-center bg-white rounded-xl z-4">
-      <div className="flex w-full px-8 my-6 justify-start">
-        <h1 className='text-5xl font-fjalla tracking-wide'>
-          Albert Doluk
-        </h1>
+    <div className="flex flex-col w-full h-full px-6 py-12 justify-center items-center  rounded-xl z-20">
+      <div className="flex w-full h-full px-8 my-6 justify-start">
+        <Link to="/Mitarbeiterprofil/1"  >
+          <h1 className='text-5xl font-fjalla tracking-wide hover:cursor-pointer hover:text-custom-dark-gray z-20'>
+            Albert Doluk
+          </h1>
+        </Link>
       </div>
       <div className="flex w-full h-full">
         <div className="flex flex-col w-[40%] h-[93%] bg-custom-light-gray bg-opacity-25 justify-center items-center rounded-xl m-6 z-10">
           <div className="flex flex-col rounded-xl bg-custom-light-gray bg-opacity-25 drop-shadow-2xl w-[100%] h-[100%] overflow-y-auto p-6 custom-scrollbar">
             <Link to="/Dienstplan">
-                <h2 className="font-lato text-black font-semibold text-2xl tracking-wide mx-2 hover:cursor-pointer hover:text-custom-light-gray">Dienstplan</h2>
+                <h2 className="font-lato text-black font-semibold text-2xl tracking-wide mx-2 hover:cursor-pointer hover:text-custom-dark-gray">Dienstplan</h2>
             </Link>
             <div className="flex flex-col space-y-2 p-2">
               <p className="text-lg font-lato mb-4 text-black">06-05-2024</p>

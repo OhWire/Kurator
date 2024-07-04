@@ -1,0 +1,11 @@
+{
+    "employee": {
+      "name": "John Doe",
+      "birthYear": 1985,
+      "gender": "Male",
+      "location": "Berlin",
+      "address": "123 Main Street",
+      "position": "Nurse"
+    }
+  }
+  

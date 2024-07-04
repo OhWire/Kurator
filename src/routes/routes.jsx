@@ -15,6 +15,7 @@ import DokumentationPflegeplanungKommunikation from '../components/Doku/aufnahme
 import DokumentationPflegeplanungMobilitaet from '../components/Doku/aufnahme/DokumentationPflegeplanungMobilitaet';
 import Register from '../components/Register/register';
 import ConfirmPage from '../components/Register/ConfirmPage';
+import Mitarbeiterprofil from '../components/Mitarbeiterprofil/Mitarbeiterprofil';
 // Import other components for different paths
 
 const LoginPage = lazy(() => import('../components/Login/Login'));
@@ -37,7 +38,8 @@ const routes = [
     { path: "/patientenliste", element: <PatientList /> },
     { path: "/PatientenProfil/:id", element: <PatientenProfil /> },
     { path: "/register", element: <Register /> },
-    { path: "/confirm", element: <ConfirmPage/>}
+    { path: "/confirm", element: <ConfirmPage/>},
+    { path: "/MitarbeiterProfil/:id", element: <Mitarbeiterprofil/> }
 ];
 
 export default routes;
