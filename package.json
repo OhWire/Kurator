@@ -25,6 +25,7 @@
     "formik": "^2.4.6",
     "http-proxy-middleware": "^3.0.0",
     "mysql": "^2.18.1",
+    "mysql2": "^3.10.2",
     "react": "^18.2.0",
     "react-datepicker": "^7.1.0",
     "react-dom": "^18.2.0",
