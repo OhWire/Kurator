@@ -39,11 +39,11 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center z-20">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Registrierung</h2>
+      <div className="bg-custom-dark-gray bg-opacity-65 p-8 rounded-xl shadow-md w-full max-w-md">
+        <h2 className="text-4xl  mb-6 text-center font-bold  font-ibm-plex-mono drop-shadow-xl text-white">Registrierung</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="firstName" className="block text-lg font-thin text-custom-light-gray ">
               Vorname
             </label>
             <input
@@ -57,7 +57,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="lastName" className="block text-lg font-thin text-custom-light-gray ">
               Nachname
             </label>
             <input
@@ -71,7 +71,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="birthday" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="birthday" className="block text-lg font-thin text-custom-light-gray ">
               Geburtstag
             </label>
             <input
@@ -85,7 +85,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-lg font-thin text-custom-light-gray ">
               Email
             </label>
             <input
@@ -99,7 +99,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-lg font-thin text-custom-light-gray">
               Passwort
             </label>
             <input
@@ -116,7 +116,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-md">
+            <button type="submit" className="w-full bg-custom-green drop-shadow-xl hover:bg-custom-light-blue transition-all duration-300 hover:text-white text-black hover:rounded-xl p-2 rounded-md">
               Registrieren
             </button>
           </div>
