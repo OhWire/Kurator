@@ -9,6 +9,7 @@ app.use(cors());
 
 app.post('/confirm', (req, res) => {
   const { email, code } = req.body;
+  console.log('Request Body:', req.body); // Log the request body for debugging
   confirmUser(email, code, (err, result) => {
     if (err) {
       console.error('Confirmation error:', err); // Log the error for debugging
@@ -18,6 +19,8 @@ app.post('/confirm', (req, res) => {
   });
 });
 
-app.listen(3001, () => {
-  console.log('Server is running on port 3001');
+const PORT = process.env.PORT || 3002;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

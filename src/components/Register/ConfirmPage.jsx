@@ -18,7 +18,7 @@ const ConfirmPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/confirm', {
+      const response = await axios.post('http://localhost:3002/confirm', {
         email: form.email,
         code: form.code,
       });
@@ -31,7 +31,7 @@ const ConfirmPage = () => {
   };
 
   return (
-    <div className="relative w-full h-full p-6 flex items-center justify-end rounded-xl overflow-hidden bg-custom-dark-gray bg-opacity-15 z-20">
+    <div className="relative w-full h-full p-6 flex items-center justify-end rounded-xl overflow-hidden bg-custom-dark-gray bg-opacity-15">
       <div className="max-w-xl w-full bg-black bg-opacity-45 rounded-2xl shadow-md p-16 mr-10 h-[80%] flex flex-col justify-center relative z-10">
         <h2 className="text-5xl tracking-widest text-white font-bold text-center mb-4 font-fjalla">ACCOUNT CONFIRMATION</h2>
         <p className="text-center text-white text-lato mb-8">ENTER THE CODE SENT TO YOUR EMAIL</p>
