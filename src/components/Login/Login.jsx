@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,6 +28,7 @@ const LoginPage = () => {
       alert('Anmeldung erfolgreich!');
       // Token im LocalStorage speichern oder weiterverarbeiten
       localStorage.setItem('token', response.data.token);
+      navigate('/additional-info', { state: { email: form.email } });
     } catch (error) {
       console.error('Anmeldefehler:', error.response?.data || error.message);
       alert('Anmeldung fehlgeschlagen! Bitte überprüfen Sie Ihre Anmeldedaten.');
