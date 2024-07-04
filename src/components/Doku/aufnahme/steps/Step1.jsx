@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useDispatch } from 'react-redux'; // Import useDispatch
+import { saveStep1Data } from '../state/actions';
 
 const validationSchema = Yup.object().shape({
   vorname: Yup.string().required('Vorname ist erforderlich'),
@@ -20,10 +22,12 @@ const validationSchema = Yup.object().shape({
   versicherungsnummer: Yup.string().required('Versicherungsnummer ist erforderlich'),
   notfallkontakt: Yup.string().required('Notfallkontakt ist erforderlich'),
   notfalltelefon: Yup.string().required('Notfalltelefon ist erforderlich')
+  
 });
 
 const Step1 = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // Create dispatch function
 
   return (
     <Formik
@@ -46,17 +50,10 @@ const Step1 = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        axios.post('http://localhost:5000/api/stammdatenblatt', values)
-          .then(response => {
-            console.log('Antwort vom Server:', response.data);
-            resetForm();
-            setSubmitting(false);
-            navigate('/step2'); // Navigiere zur nächsten Seite
-          })
-          .catch(error => {
-            console.error('Fehler beim Einfügen des Stammdatenblatts:', error);
-            setSubmitting(false);
-          });
+        dispatch(saveStep1Data(values));
+        resetForm();
+        setSubmitting(false);
+        navigate('/step2'); // Navigate to the next page
       }}
     >
       {({ isSubmitting }) => (

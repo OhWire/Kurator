@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
+import { saveStep6Data } from '../state/actions';
+import { useDispatch } from 'react-redux';
 
 const initialValues = {
   goalsAndMeasures: [
@@ -40,6 +42,7 @@ const statusOptions = ['In Bearbeitung', 'Abgeschlossen', 'Ausstehend'];
 
 const Step6 = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [focusedRow, setFocusedRow] = useState(null);
 
   return (
@@ -47,6 +50,7 @@ const Step6 = () => {
       initialValues={initialValues}
       onSubmit={(values) => {
         console.log(values);
+        dispatch(saveStep6Data(values))
         navigate('/step7');
       }}
     >
@@ -76,30 +80,30 @@ const Step6 = () => {
                         <Field
                           name={`goalsAndMeasures[${index}].name`}
                           placeholder="Kategorie"
-                          className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-gray-200"
+                          className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35"
                           disabled
                         />
                         <Field
                           name={`goalsAndMeasures[${index}].goal`}
                           placeholder="Ziele"
-                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-gray-200 w-full"
+                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-custom-light-gray bg-opacity-35 px-6 w-full"
                           component="textarea"
                           rows="4"
                         />
                         <Field
                           name={`goalsAndMeasures[${index}].measures`}
                           placeholder="Maßnahmen"
-                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-gray-200 w-full"
+                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-custom-light-gray bg-opacity-35 px-6 w-full"
                           component="textarea"
                           rows="4"
                         />
-                        <Field as="select" name={`goalsAndMeasures[${index}].responsibilities`} className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-gray-200 w-full">
+                        <Field as="select" name={`goalsAndMeasures[${index}].responsibilities`} className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35  w-full">
                           <option value="">Verantwortlichkeiten</option>
                           {responsibilityOptions.map((option, i) => (
                             <option key={i} value={option}>{option}</option>
                           ))}
                         </Field>
-                        <Field as="select" name={`goalsAndMeasures[${index}].status`} className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-gray-200 w-full">
+                        <Field as="select" name={`goalsAndMeasures[${index}].status`} className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35 w-full">
                           <option value="">Status</option>
                           {statusOptions.map((option, i) => (
                             <option key={i} value={option}>{option}</option>

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from "axios";
+
+
 
 const initialValues = {
   evaluation: [
@@ -16,11 +20,37 @@ const frequencyOptions = ['Täglich', 'Wöchentlich', 'Monatlich', 'Vierteljähr
 const Step7 = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
+  const step1Data = useSelector((state) => state.step1Data);
+  const step2Data = useSelector((state) => state.step2Data);
+  const step3Data = useSelector((state) => state.step3Data);
+  const step4Data = useSelector((state) => state.step4Data);
+  const step5Data = useSelector((state) => state.step5Data);
+  const step6Data = useSelector((state) => state.step6Data);
+  const dispatch = useDispatch();
+
 
   const handleSubmit = (values) => {
-    console.log(values);
-    // Assuming the database submission is successful
-    setShowPopup(true);
+    const completeData = {
+      ...step1Data,
+      ...step2Data,
+      ...step3Data,
+      ...step4Data,
+      ...step5Data,
+      ...step6Data,
+      evaluation: values.evaluation,
+      nurse: values.nurse,
+      management: values.management,
+    };
+
+    axios.post('http://localhost:5000/api/patients', completeData)
+      .then(response => {
+        setShowPopup(true);
+        
+      })
+      .catch(error => {
+        console.error('Fehler beim Speichern der Patientendaten:', error);
+        console.log(completeData)
+      });
   };
 
   const handlePopupClose = () => {
@@ -55,15 +85,15 @@ const Step7 = () => {
                         <Field
                           name={`evaluation[${index}].name`}
                           placeholder="Kategorie"
-                          className="drop-shadow-md font-lato text-md text-center p-4 rounded-xl bg-gray-200"
+                          className="drop-shadow-md font-lato text-md text-center p-4 rounded-xl bg-custom-light-gray bg-opacity-35"
                           disabled
                         />
                         <Field
                           name={`evaluation[${index}].responsible`}
                           placeholder="Verantwortlich"
-                          className="drop-shadow-md font-lato text-md text-center p-4 rounded-xl bg-gray-200 w-full"
+                          className="drop-shadow-md font-lato text-md text-center p-4 rounded-xl bg-custom-light-gray bg-opacity-35 w-full"
                         />
-                        <Field as="select" name={`evaluation[${index}].frequency`} className="drop-shadow-md font-lato text-md text-center p-4 rounded-xl bg-gray-200 w-full">
+                        <Field as="select" name={`evaluation[${index}].frequency`} className="drop-shadow-md font-lato text-md text-center p-4 rounded-xl bg-custom-light-gray bg-opacity-35  w-full">
                           <option value="">Wählen Sie die Häufigkeit</option>
                           {frequencyOptions.map((option, i) => (
                             <option key={i} value={option}>{option}</option>
@@ -72,7 +102,7 @@ const Step7 = () => {
                         <Field
                           name={`evaluation[${index}].notes`}
                           placeholder="Geben Sie Notizen ein"
-                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-gray-200 w-full"
+                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-custom-light-gray bg-opacity-35 px-6 w-full"
                           component="textarea"
                           rows="4"
                         />

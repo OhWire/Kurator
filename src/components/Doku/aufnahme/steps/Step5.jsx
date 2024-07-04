@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
+import { useDispatch } from 'react-redux';
+import { saveStep5Data } from '../state/actions';
 
 const initialValues = {
   categories: [
@@ -16,13 +18,14 @@ const intensityOptions = ['Sehr gering', 'Gering', 'Mittel', 'Hoch', 'Sehr hoch'
 
 const Step5 = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [focusedRow, setFocusedRow] = useState(null);
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(saveStep5Data(values))
         navigate('/step6');
       }}
     >
@@ -50,11 +53,11 @@ const Step5 = () => {
                         <Field
                           name={`categories[${index}].name`}
                           placeholder="Kategorie"
-                          className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-gray-200"
+                          className="drop-shadow-md font-lato text-lg font-light text-center p-4 mx-4 rounded-xl bg-custom-light-gray  bg-opacity-35"
                           disabled
                         />
                         <div className="flex justify-center items-center w-full">
-                        <Field as="select" name={`categories[${index}].intensity`} className="flex justify-center items-center drop-shadow-md w-64 font-lato text-md text-center p-4 mx-4 rounded-xl bg-gray-200 ">
+                        <Field as="select" name={`categories[${index}].intensity`} className="flex justify-center items-center drop-shadow-md w-64 font-lato text-lg font-light text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35 ">
                           <option value="">Wählen Sie die Intensität</option>
                           {intensityOptions.map((option, i) => (
                             <option key={i} value={option}>{option}</option>
@@ -64,7 +67,7 @@ const Step5 = () => {
                         <Field
                           name={`categories[${index}].details`}
                           placeholder="Geben Sie Details ein"
-                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-gray-200 w-full"
+                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-custom-light-gray bg-opacity-35 px-6 w-full"
                           component="textarea"
                           rows="4"
                         />

@@ -3,9 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import routes from './routes/routes'; // Adjust the path as needed
 import Navbar from './components/Navbar/Navbar';
 import WaveBackground from './components/background/wavebackground';
+import { Provider } from 'react-redux';
+import store from './components/Doku/aufnahme/state/store';
 
 function App() {
   return (
+   <Provider store={store}>
     <Router>
       <div className="relative flex w-screen h-screen overflow-hidden">
         {/* Outer Navbar Container */}
@@ -35,6 +38,7 @@ function App() {
         </div>
       </div>
     </Router>
+   </Provider>
   );
 }
 
