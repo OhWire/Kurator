@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import { useDispatch } from 'react-redux'; // Import useDispatch
 import { saveStep1Data } from '../state/actions';
 
@@ -22,7 +21,6 @@ const validationSchema = Yup.object().shape({
   versicherungsnummer: Yup.string().required('Versicherungsnummer ist erforderlich'),
   notfallkontakt: Yup.string().required('Notfallkontakt ist erforderlich'),
   notfalltelefon: Yup.string().required('Notfalltelefon ist erforderlich')
-  
 });
 
 const Step1 = () => {
@@ -63,123 +61,151 @@ const Step1 = () => {
               <h2 className='text-4xl font-fjalla p-6'>Dokumentation<span className='text-xl'>_Stammdatenblatt</span></h2>
             </div>
           </div>
-          <div className="flex justify-center items-center h-[85%] w-full">
-            <div className="flex w-[95%] h-[95%] bg-custom-light-gray bg-opacity-25 rounded-xl p-4">
+          <div className="flex justify-center items-center h-[70%] w-full">
+            <div className="flex w-[95%] h-full bg-custom-light-gray bg-opacity-25 rounded-xl p-4 overflow-y-scroll custom-scrollbar">
               <div className="flex flex-col w-full mx-6 h-full space-y-4">
                 <div className="flex flex-wrap justify-between space-y-4 w-full h-full">
                   <h2 className='text-xl p-0 font-fjalla w-full'>Stammdatenblatt</h2>
-                  <Field
-                    name="vorname"
-                    placeholder="Vorname"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="vorname" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="nachname"
-                    placeholder="Nachname"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="nachname" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="geburtsname"
-                    placeholder="Geburtsname"
-                    className='flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl'
-                  />
-                  <Field
-                    name="geburtsdatum"
-                    type="date"
-                    placeholder="Geburtsdatum"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="geburtsdatum" component="div" className="text-red-500 text-sm" />
-                  <Field as="select" name="geschlecht" className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}>
-                    <option value="" label="Geschlecht wählen" />
-                    <option value="männlich" label="Männlich" />
-                    <option value="weiblich" label="Weiblich" />
-                    <option value="divers" label="Divers" />
-                  </Field>
-                  <ErrorMessage name="geschlecht" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="nationalitaet"
-                    placeholder="Nationalität"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="nationalitaet" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="adresse"
-                    placeholder="Adresse"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="adresse" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="plz"
-                    placeholder="PLZ"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="plz" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="stadt"
-                    placeholder="Stadt"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="stadt" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="land"
-                    placeholder="Land"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="land" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="telefon"
-                    placeholder="Telefon"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="telefon" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="email"
-                    placeholder="Email"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="versicherungsnummer"
-                    placeholder="Versicherungsnummer"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="versicherungsnummer" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="notfallkontakt"
-                    placeholder="Notfallkontakt"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="notfallkontakt" component="div" className="text-red-500 text-sm" />
-                  <Field
-                    name="notfalltelefon"
-                    placeholder="Notfalltelefon"
-                    className={`flex drop-shadow-md font-Beba p-2 w-[48%] rounded-xl`}
-                  />
-                  <ErrorMessage name="notfalltelefon" component="div" className="text-red-500 text-sm" />
-                </div>
-              </div>
-              <div className="flex flex-col h-100 justify-between mt-6">
-                <div className="flex space-x-4">
-                  <button
-                    type="button"
-                    onClick={() => navigate(-1)}
-                    className='font-lato semibold text-white bg-opacity-75 text-xl w-32 h-12 rounded-xl bg-custom-dark-gray'
-                  >
-                    Zurück
-                  </button>
-                  <button
-                    type="submit"
-                    className='font-lato semibold text-white bg-opacity-75 text-xl w-32 h-12 rounded-xl bg-custom-dark-gray'
-                    disabled={isSubmitting}
-                  >
-                    Weiter
-                  </button>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="vorname"
+                      placeholder="Vorname"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="vorname" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="nachname"
+                      placeholder="Nachname"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="nachname" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="geburtsname"
+                      placeholder="Geburtsname"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="geburtsdatum"
+                      type="date"
+                      placeholder="Geburtsdatum"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="geburtsdatum" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field as="select" name="geschlecht" className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35">
+                      <option value="" label="Geschlecht wählen" />
+                      <option value="männlich" label="Männlich" />
+                      <option value="weiblich" label="Weiblich" />
+                      <option value="divers" label="Divers" />
+                    </Field>
+                    <ErrorMessage name="geschlecht" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="nationalitaet"
+                      placeholder="Nationalität"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="nationalitaet" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="adresse"
+                      placeholder="Adresse"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="adresse" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="plz"
+                      placeholder="PLZ"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="plz" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="stadt"
+                      placeholder="Stadt"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="stadt" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="land"
+                      placeholder="Land"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="land" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="telefon"
+                      placeholder="Telefon"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="telefon" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="email"
+                      placeholder="Email"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="versicherungsnummer"
+                      placeholder="Versicherungsnummer"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="versicherungsnummer" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="notfallkontakt"
+                      placeholder="Notfallkontakt"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="notfallkontakt" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                  <div className="flex flex-col w-[48%]">
+                    <Field
+                      name="notfalltelefon"
+                      placeholder="Notfalltelefon"
+                      className="flex drop-shadow-md font-Beba p-2 rounded-xl bg-custom-light-gray bg-opacity-35"
+                    />
+                    <ErrorMessage name="notfalltelefon" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="flex justify-between mt-4 px-10">
+            <button
+              type="button"
+              onClick={() => navigate(-1)}
+              className="font-lato semibold text-white bg-opacity-75 text-xl w-32 h-12 rounded-xl bg-custom-dark-gray"
+            >
+              Zurück
+            </button>
+            <button
+              type="submit"
+              className="font-lato semibold text-white bg-opacity-75 text-xl w-32 h-12 rounded-xl bg-custom-dark-gray"
+              disabled={isSubmitting}
+            >
+              Weiter
+            </button>
           </div>
         </Form>
       )}
