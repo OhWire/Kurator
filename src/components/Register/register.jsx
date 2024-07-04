@@ -22,16 +22,17 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3000/register', {
-        username: `${form.firstName} ${form.lastName}`,
+        username: form.email,  // Verwenden Sie die E-Mail-Adresse als Benutzernamen
         email: form.email,
         password: form.password,
-        birthday: form.birthday
+        givenName: form.firstName,
+        familyName: form.lastName,
+        birthdate: form.birthday
       });
       console.log(response.data);
-      // Nach erfolgreicher Registrierung, können Sie den Benutzer weiterleiten oder eine Erfolgsmeldung anzeigen
       alert('Registrierung erfolgreich! Sie können sich nun anmelden.');
     } catch (error) {
-      console.error(error);
+      console.error('Error:', error.response?.data || error.message);
       alert('Registrierung fehlgeschlagen! Bitte versuchen Sie es erneut.');
     }
   };

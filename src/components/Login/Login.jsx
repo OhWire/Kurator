@@ -25,6 +25,7 @@ const LoginPage = () => {
       console.log(response.data);
       alert('Anmeldung erfolgreich!');
       // Token im LocalStorage speichern oder weiterverarbeiten
+      localStorage.setItem('token', response.data.token);
     } catch (error) {
       console.error('Anmeldefehler:', error);
       alert('Anmeldung fehlgeschlagen! Bitte überprüfen Sie Ihre Anmeldedaten.');

@@ -1,11 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import cors from 'cors';  // Hinzugefügt
+import cors from 'cors';  
 import { authenticateUser } from './auth.js';
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors()); // CORS erlauben
+app.use(cors()); 
 
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
