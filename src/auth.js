@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { CognitoIdentityProviderClient, SignUpCommand } from '@aws-sdk/client-cognito-identity-provider';
+import { CognitoIdentityProviderClient, ConfirmSignUpCommand } from '@aws-sdk/client-cognito-identity-provider';
 import AmazonCognitoIdentity from 'amazon-cognito-identity-js';
 
 dotenv.config();
@@ -76,7 +76,24 @@ const authenticateUser = (username, password, callback) => {
   });
 };
 
+const confirmUser = (email, code, callback) => {
+  const userData = {
+    Username: email,
+    Pool: userPool,
+  };
+
+  const cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+  cognitoUser.confirmRegistration(code, true, (err, result) => {
+    if (err) {
+      return callback(err);
+    }
+    callback(null, result);
+  });
+};
+
 export {
   registerUser,
-  authenticateUser
+  authenticateUser,
+  confirmUser
 };
