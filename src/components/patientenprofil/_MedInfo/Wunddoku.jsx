@@ -5,9 +5,11 @@ import Feet1 from "../../img/feet1.png";
 import Feet2 from "../../img/Feet2.png";
 import Hand1 from "../../img/hand1.png";
 import Hand2 from "../../img/hand2.png";
+import SpinningBody from './SpinningBody';
 
 const Wunddoku = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [show3DBody, setShow3DBody] = useState(false);
   const wunddokuRef = useRef(null);
 
   const toggleFullscreen = () => {
@@ -35,10 +37,13 @@ const Wunddoku = () => {
     setIsFullscreen(!isFullscreen);
   };
 
+  const toggle3DBody = () => {
+    setShow3DBody(!show3DBody);
+  };
+
   return (
     <div ref={wunddokuRef} className="p-4 rounded-2xl bg-white bg-opacity-60 overflow-y-auto w-full h-full z-20 custom-scrollbar">
       <div className="flex justify-end items-center mb-4">
-        
         <button onClick={toggleFullscreen} className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-all duration-300">
           {isFullscreen ? <FiMinimize className="w-6 h-6" /> : <FiMaximize className="w-6 h-6" />}
         </button>
@@ -46,22 +51,22 @@ const Wunddoku = () => {
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2 space-y-4">
           <div>
-            <label className="block text-2xl pb-2 font-thin  text-gray-700">Anamnese</label>
+            <label className="block text-2xl pb-2 font-thin text-gray-700">Anamnese</label>
             <textarea className="mt-1 block w-full h-52 p-2 border border-gray-300 rounded-md"></textarea>
           </div>
           <div>
-            <label className="block text-2xl pb-2 font-thin  text-gray-700">Wundbeschreibung</label>
+            <label className="block text-2xl pb-2 font-thin text-gray-700">Wundbeschreibung</label>
             <textarea className="mt-1 block w-full h-52 p-2 border border-gray-300 rounded-md"></textarea>
           </div>
           <div>
-            <label className="block text-2xl pb-2 font-thin  text-gray-700">Wundbehandlung</label>
+            <label className="block text-2xl pb-2 font-thin text-gray-700">Wundbehandlung</label>
             <textarea className="mt-1 block w-full h-52 p-2 border border-gray-300 rounded-md"></textarea>
           </div>
         </div>
         <div className="flex flex-col justify-center items-center col-span-1 space-y-4">
           <div>
-            <label className="block text-2xl pb-2 font-thin  text-gray-700">Neurological Findings</label>
-            <div className="flex justify-center items-center p-2 border border-gray-300 rounded-md">
+            <label className="block text-2xl pb-2 font-thin text-gray-700">Neurological Findings</label>
+            <div onClick={toggle3DBody} className="cursor-pointer flex justify-center items-center p-2 border border-gray-300 rounded-md">
               <img src={BodyDiagram} alt="Neurological Findings" className="max-w-full h-auto"/>
             </div>
           </div>
@@ -82,8 +87,20 @@ const Wunddoku = () => {
           </div>
         </div>
       </div>
+
+      {show3DBody && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-30">
+          <div className="relative w-3/4 h-3/4 bg-white p-4 rounded-lg">
+            <button onClick={toggle3DBody} className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full">
+              Close
+            </button>
+            <SpinningBody />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Wunddoku;
+
