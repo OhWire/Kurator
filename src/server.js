@@ -9,8 +9,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3002;
 
+// Erlauben Sie alle Ursprünge
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], // Erlauben Sie localhost und 127.0.0.1
+  origin: '*',
   optionsSuccessStatus: 200,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -59,6 +60,6 @@ app.post('/login', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => { // Binden Sie den Server an alle Netzwerkschnittstellen
   console.log(`Server läuft auf http://localhost:${PORT}`);
 });
