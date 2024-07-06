@@ -1,36 +1,21 @@
 module.exports = {
   apps: [
     {
-      name: "login",
-      script: "./api/login.js",
-      watch: true,
+      name: 'vite-app',
+      script: 'serve',
       env: {
-        NODE_ENV: "development",
+        PM2_SERVE_PATH: './dist',
+        PM2_SERVE_PORT: 5173,
+        PM2_SERVE_SPA: 'true',
+        NODE_ENV: 'production',
       },
     },
     {
-      name: "register",
-      script: "./api/register.js",
-      watch: true,
+      name: 'express-server',
+      script: 'server.js',
       env: {
-        NODE_ENV: "development",
-      },
-    },
-    {
-      name: "confirm",
-      script: "./api/confirm.js",
-      watch: true,
-      env: {
-        NODE_ENV: "development",
-      },
-    },
-    {
-      name: "react-app",
-      script: "npm",
-      args: "start",
-      cwd: "./client",
-      env: {
-        NODE_ENV: "development",
+        NODE_ENV: 'production',
+        PORT: 3002,
       },
     },
   ],
