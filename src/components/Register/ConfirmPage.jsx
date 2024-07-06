@@ -22,7 +22,7 @@ const ConfirmPage = () => {
         email: form.email,
         code: form.code,
       });
-      const response = await axios.post('http://localhost:3002/confirm', {
+      const response = await axios.post('http://18.192.120.141:3002/confirm', { // Verwenden Sie Ihre externe IP-Adresse und Port
         email: form.email,
         code: form.code,
       });

@@ -20,7 +20,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3002/login', {
+      const response = await axios.post('http://18.192.120.141:3002/login', { // Verwenden Sie Ihre externe IP-Adresse und Port
         username: form.email,
         password: form.password,
       });
