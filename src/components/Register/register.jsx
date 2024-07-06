@@ -24,7 +24,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://18.192.120.141:3002/register', { // Verwenden Sie Ihre externe IP-Adresse und Port
+      const response = await axios.post('http://18.192.120.141:3002/register', { // Verwenden Sie localhost und den richtigen Port
         username: form.email, // Verwenden Sie die E-Mail-Adresse als Benutzernamen
         email: form.email,
         password: form.password,
@@ -115,7 +115,7 @@ const Register = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
               minLength="12"
-              pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\\W).{12,}"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{12,}"
               title="Das Passwort muss mindestens 12 Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten."
             />
           </div>
