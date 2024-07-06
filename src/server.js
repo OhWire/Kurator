@@ -7,10 +7,10 @@ import { registerUser, authenticateUser, confirmUser } from './auth.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // oder '*', um alle Ursprünge zuzulassen
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], // Erlauben Sie localhost und 127.0.0.1
   optionsSuccessStatus: 200,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: ['Content-Type', 'Authorization']
