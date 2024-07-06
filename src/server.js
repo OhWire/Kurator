@@ -9,9 +9,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3002;
 
-// Erlauben Sie alle Ursprünge
 const corsOptions = {
-  origin: '*',
+  origin: '*', // Erlauben Sie alle Ursprünge
   optionsSuccessStatus: 200,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: ['Content-Type', 'Authorization']
