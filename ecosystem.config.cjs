@@ -2,12 +2,10 @@ module.exports = {
   apps: [
     {
       name: 'vite-app',
-      script: 'serve',
+      script: 'npm',
+      args: 'run dev',
       env: {
-        PM2_SERVE_PATH: './dist',
-        PM2_SERVE_PORT: 5173,
-        PM2_SERVE_SPA: 'true',
-        NODE_ENV: 'production',
+        NODE_ENV: 'development',
       },
     },
     {
