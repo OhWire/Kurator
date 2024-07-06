@@ -61,5 +61,5 @@ app.post('/login', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => { // Binden Sie den Server an alle Netzwerkschnittstellen
-  console.log(`Server läuft auf http://localhost:${PORT}`);
+  console.log(`Server läuft auf http://0.0.0.0:${PORT}`);
 });
