@@ -44,11 +44,15 @@ const registerUser = (username, password, email, givenName, familyName, birthdat
   attributeList.push(attributeFamilyName);
   attributeList.push(attributeBirthdate);
 
+  console.log('Attempting to sign up user with:', username, password); // Log the request details
+
   userPool.signUp(username, password, attributeList, null, (err, result) => {
     if (err) {
+      console.error('Error during sign up:', err); // Log the error details
       return callback(err);
     }
     const cognitoUser = result.user;
+    console.log('User signed up successfully:', cognitoUser); // Log the successful signup
     callback(null, cognitoUser);
   });
 };

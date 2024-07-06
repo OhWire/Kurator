@@ -1,59 +1,64 @@
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 import dotenv from 'dotenv';
+import { registerUser, authenticateUser, confirmUser } from './auth.js';
+
 dotenv.config();
 
-import express from 'express';
-import mysql from 'mysql';
-import { createProxyMiddleware } from 'http-proxy-middleware';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-// Hilfsfunktionen, um __dirname und __filename in ES-Modulen zu verwenden
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// MySQL-Datenbankverbindung herstellen
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to the database:', err);
-    return;
-  }
-  console.log('Connected to the MySQL database');
-});
-
-// Express-Server einrichten
 const app = express();
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-// Proxy für React-App
-app.use('/', createProxyMiddleware({ target: 'http://localhost:3000', changeOrigin: true }));
+const corsOptions = {
+  origin: 'http://localhost:5173', // oder '*', um alle Ursprünge zuzulassen
+  optionsSuccessStatus: 200,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
 
-// API-Endpunkte hinzufügen, falls benötigt
-app.get('/api/test', (req, res) => {
-  connection.query('SELECT NOW()', (err, results) => {
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+
+// Registrierung
+app.post('/register', (req, res) => {
+  const { username, password, email, givenName, familyName, birthdate } = req.body;
+  console.log('Request Body:', req.body); // Log the request body for debugging
+  registerUser(username, password, email, givenName, familyName, birthdate, (err, result) => {
     if (err) {
-      res.status(500).send('Error executing query');
-      return;
+      console.error('Error registering user:', err); // Log the error for debugging
+      return res.status(400).json({ error: err.message });
     }
-    res.send(`Current time from database: ${results[0]['NOW()']}`);
+    res.json({ message: 'User registered successfully', user: result });
   });
 });
 
-// Statische Dateien aus dem 'build'-Verzeichnis der React-App servieren
-app.use(express.static(path.join(__dirname, 'build')));
+// Bestätigung
+app.post('/confirm', (req, res) => {
+  const { email, code } = req.body;
+  console.log('Received data:', { email, code }); // Log received data
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  confirmUser(email, code, (err, result) => {
+    if (err) {
+      console.error('Confirmation error:', err); // Log the error for debugging
+      return res.status(400).json({ message: 'Bestätigung fehlgeschlagen!', error: err.message });
+    }
+    res.status(200).send({ message: 'Bestätigung erfolgreich!', result });
+  });
 });
 
-// Server starten
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Anmeldung
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  console.log('Request Body:', req.body); // Log the request body for debugging
+  authenticateUser(username, password, (err, result) => {
+    if (err) {
+      console.error('Authentication error:', err); // Log the error for debugging
+      return res.status(400).json({ error: err.message });
+    }
+    res.json({ message: 'User authenticated successfully', token: result.getAccessToken().getJwtToken() });
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server läuft auf http://localhost:${PORT}`);
 });

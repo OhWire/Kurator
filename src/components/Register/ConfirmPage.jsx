@@ -18,11 +18,15 @@ const ConfirmPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log('Sending data:', {
+        email: form.email,
+        code: form.code,
+      });
       const response = await axios.post('http://localhost:3002/confirm', {
         email: form.email,
         code: form.code,
       });
-      console.log(response.data);
+      console.log('Response:', response.data);
       alert('Bestätigung erfolgreich!');
     } catch (error) {
       console.error('Bestätigungsfehler:', error.response?.data || error.message);

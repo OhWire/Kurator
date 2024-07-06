@@ -24,30 +24,30 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/register', {
-        username: form.email,  // Verwenden Sie die E-Mail-Adresse als Benutzernamen
+      const response = await axios.post('http://localhost:3002/register', {
+        username: form.email, // Verwenden Sie die E-Mail-Adresse als Benutzernamen
         email: form.email,
         password: form.password,
         givenName: form.firstName,
         familyName: form.lastName,
-        birthdate: form.birthday
+        birthdate: form.birthday,
       });
       console.log(response.data);
       alert('Registrierung erfolgreich! Sie können sich nun anmelden.');
+      navigate('/confirm');
     } catch (error) {
       console.error('Error:', error.response?.data || error.message);
       alert('Registrierung fehlgeschlagen! Bitte versuchen Sie es erneut.');
     }
-    navigate('/confirm');
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center z-20">
       <div className="bg-custom-dark-gray bg-opacity-65 p-8 rounded-xl shadow-md w-full max-w-md">
-        <h2 className="text-4xl  mb-6 text-center font-bold  font-ibm-plex-mono drop-shadow-xl text-white">Registrierung</h2>
+        <h2 className="text-4xl mb-6 text-center font-bold font-ibm-plex-mono drop-shadow-xl text-white">Registrierung</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="firstName" className="block text-lg font-thin text-custom-light-gray ">
+            <label htmlFor="firstName" className="block text-lg font-thin text-custom-light-gray">
               Vorname
             </label>
             <input
@@ -61,7 +61,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="lastName" className="block text-lg font-thin text-custom-light-gray ">
+            <label htmlFor="lastName" className="block text-lg font-thin text-custom-light-gray">
               Nachname
             </label>
             <input
@@ -75,7 +75,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="birthday" className="block text-lg font-thin text-custom-light-gray ">
+            <label htmlFor="birthday" className="block text-lg font-thin text-custom-light-gray">
               Geburtstag
             </label>
             <input
@@ -89,7 +89,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-lg font-thin text-custom-light-gray ">
+            <label htmlFor="email" className="block text-lg font-thin text-custom-light-gray">
               Email
             </label>
             <input
