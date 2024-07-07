@@ -20,7 +20,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://3.71.113.59:3002/login', { // Verwenden Sie Ihre externe IP-Adresse und Port
+      const response = await axios.post('3.70.129.139:3002/login', { // Verwenden Sie Ihre externe IP-Adresse und Port
         username: form.email,
         password: form.password,
       });

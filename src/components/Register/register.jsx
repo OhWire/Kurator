@@ -24,7 +24,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://3.71.113.59:3002/register', { // Verwenden Sie localhost und den richtigen Port
+      const response = await axios.post('3.70.129.139:3002/register', { // Verwenden Sie localhost und den richtigen Port
         username: form.email, // Verwenden Sie die E-Mail-Adresse als Benutzernamen
         email: form.email,
         password: form.password,
