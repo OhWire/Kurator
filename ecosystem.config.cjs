@@ -2,19 +2,22 @@ module.exports = {
   apps: [
     {
       name: 'vite-app',
-      script: 'npm',
-      args: 'run dev',
+      script: 'serve',
+      args: '-s dist -l 5173',
       env: {
-        NODE_ENV: 'development',
+        NODE_ENV: 'production',
       },
+      cwd: '/home/PatDoc/KuratorFinal', // Setzen Sie das Arbeitsverzeichnis
     },
     {
-      name: 'express-server',
-      script: 'server.js',
+      name: 'RegConLog-Server',
+      script: './src/server.js',
+      interpreter: 'node',
       env: {
         NODE_ENV: 'production',
         PORT: 3002,
       },
+      cwd: '/home/PatDoc/KuratorFinal', // Setzen Sie das Arbeitsverzeichnis
     },
   ],
 };

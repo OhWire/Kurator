@@ -7,11 +7,12 @@
     "start-register": "node src/register.js",
     "start-login": "node src/login.js",
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && pm2 start ecosystem.config.cjs --env production",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "start-server": "node src/server.js",
-    "start-confirm": "node src/confirm.js"
+    "start-confirm": "node src/confirm.js",
+    "serve": "vite preview --port 5173"
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.609.0",
@@ -41,8 +42,6 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
