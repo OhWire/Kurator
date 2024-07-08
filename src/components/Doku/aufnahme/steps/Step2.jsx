@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
-import { useDispatch } from 'react-redux'; // Import useDispatch
+import { useDispatch } from 'react-redux';
 import { saveStep2Data } from '../state/actions';
 
 const initialValues = {
@@ -22,14 +22,15 @@ const intensityOptions = ['Leicht', 'Mittel', 'Schwer'];
 
 const Step2 = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // Create dispatch function
+  const dispatch = useDispatch();
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        dispatch(saveStep2Data(values)); // Save data to global state
-        navigate('/step3'); // Navigate to the next page
+        const patientId = 1; // Use the actual patientId you want to associate
+        dispatch(saveStep2Data({ ...values, patientId }));
+        navigate('/step3');
       }}
     >
       {({ values }) => (

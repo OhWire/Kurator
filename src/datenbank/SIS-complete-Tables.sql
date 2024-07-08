@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS Patientenprofile;
+USE Patientenprofile;
+
 CREATE TABLE IF NOT EXISTS Stammdaten (
   id INT PRIMARY KEY AUTO_INCREMENT,
   vorname VARCHAR(255) NOT NULL,

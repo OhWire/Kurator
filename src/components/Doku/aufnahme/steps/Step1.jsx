@@ -22,7 +22,6 @@ const validationSchema = Yup.object().shape({
   notfallkontakt: Yup.string().required('Notfallkontakt ist erforderlich'),
   notfalltelefon: Yup.string().required('Notfalltelefon ist erforderlich'),
   zimmernummer: Yup.string().required('Zimmernummer ist erforderlich'),
-  aufgabenErledigt: Yup.number().required('Anzahl der erledigten Aufgaben ist erforderlich').min(0, 'Anzahl der erledigten Aufgaben kann nicht negativ sein')
 });
 
 const Step1 = () => {
@@ -48,7 +47,6 @@ const Step1 = () => {
         notfallkontakt: '',
         notfalltelefon: '',
         zimmernummer: '',
-        aufgabenErledigt: 0,
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -199,7 +197,6 @@ const Step1 = () => {
                     />
                     <ErrorMessage name="zimmernummer" component="div" className="text-red-500 text-sm mt-1" />
                   </div>
-                  
                 </div>
               </div>
             </div>

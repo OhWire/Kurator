@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, FieldArray } from 'formik';
 import { saveStep3Data } from '../state/actions';
 
@@ -23,7 +23,8 @@ const Step3 = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        dispatch(saveStep3Data(values))
+        const patientId = 1; // Use the actual patientId you want to associate
+        dispatch(saveStep3Data({ ...values, patientId }));
         navigate('/step4');
       }}
     >

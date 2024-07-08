@@ -2088,6 +2088,14 @@ binary-extensions@^2.0.0:
   resolved "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.3.0.tgz"
   integrity sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==
 
+binary@*:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/binary/-/binary-0.3.0.tgz"
+  integrity sha512-D4H1y5KYwpJgK8wk1Cue5LLPgmwHKYSChkbspQg5JtVuR5ulGckxfR62H3AE9UDkdMC8yyXlqYihuz3Aqg2XZg==
+  dependencies:
+    buffers "~0.1.1"
+    chainsaw "~0.1.0"
+
 body-parser@^1.20.2, body-parser@1.20.2:
   version "1.20.2"
   resolved "https://registry.npmjs.org/body-parser/-/body-parser-1.20.2.tgz"
@@ -2166,6 +2174,11 @@ buffer@4.9.2:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
+buffers@*, buffers@~0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/buffers/-/buffers-0.1.1.tgz"
+  integrity sha512-9q/rDEGSb/Qsvv2qvzIzdluL5k7AaJOTrw23z9reQthrbF7is4CtlT0DXyO1oei2DCp4uojjzQ7igaSHp1kAEQ==
+
 bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/bytes/-/bytes-3.0.0.tgz"
@@ -2206,6 +2219,13 @@ caniuse-lite@^1.0.30001599, caniuse-lite@^1.0.30001629:
   version "1.0.30001636"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001636.tgz"
   integrity sha512-bMg2vmr8XBsbL6Lr0UHXy/21m84FTxDLWn2FSqMd5PrlbMxwJlQnC2YWYxVgp66PZE+BBNF2jYQUBKCo1FDeZg==
+
+chainsaw@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/chainsaw/-/chainsaw-0.1.0.tgz"
+  integrity sha512-75kWfWt6MEKNC8xYXIdRpDehRYY/tNSgwKaJq+dbbDcxORuVrrQ+SEHoWsniVn9XPYfP4gmdWIeDk/4YNp1rNQ==
+  dependencies:
+    traverse ">=0.3.0 <0.4"
 
 chalk-template@0.4.0:
   version "0.4.0"
@@ -2449,7 +2469,7 @@ date-fns@^3.3.1:
   resolved "https://registry.npmjs.org/date-fns/-/date-fns-3.6.0.tgz"
   integrity sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==
 
-debug@^4.1.0, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4:
+debug@*, debug@^4.1.0, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4:
   version "4.3.5"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.5.tgz"
   integrity sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==
@@ -5064,6 +5084,15 @@ tailwindcss@^3.4.4:
     resolve "^1.22.2"
     sucrase "^3.32.0"
 
+telnet@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/telnet/-/telnet-0.0.1.tgz"
+  integrity sha512-IIAC/VvdLdtoCYD6aNsnX5qA9V07/1TLhAp60IvADYRYrr9p4wgTFrdW3+QyRdm3DXOrXC79b8jxrj4R5rzuVw==
+  dependencies:
+    binary "*"
+    buffers "*"
+    debug "*"
+
 text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
@@ -5124,6 +5153,11 @@ tr46@~0.0.3:
   version "0.0.3"
   resolved "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
+
+"traverse@>=0.3.0 <0.4":
+  version "0.3.9"
+  resolved "https://registry.npmjs.org/traverse/-/traverse-0.3.9.tgz"
+  integrity sha512-iawgk0hLP3SxGKDfnDJf8wTz4p2qImnyihM5Hh/sGvQ3K37dPi/w8sRhdNIxYA1TwFwc5mDhIJq+O0RsvXBKdQ==
 
 ts-interface-checker@^0.1.9:
   version "0.1.13"

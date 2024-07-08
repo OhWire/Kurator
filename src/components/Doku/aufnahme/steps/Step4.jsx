@@ -22,7 +22,8 @@ const Step4 = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        dispatch(saveStep4Data(values))
+        const patientId = 1; // Use the actual patientId you want to associate
+        dispatch(saveStep4Data({ ...values, patientId }));
         navigate('/step5');
       }}
     >

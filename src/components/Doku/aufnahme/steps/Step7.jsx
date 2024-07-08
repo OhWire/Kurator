@@ -39,7 +39,7 @@ const Step7 = () => {
       management: values.management,
     };
 
-    axios.post('http://localhost:5000/api/patients', completeData)
+    axios.post('http://localhost:3001/add-step7-data', completeData)
       .then(response => {
         setShowPopup(true);
       })
