@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const db = mysql.createConnection({
   host: 'pd-db.cgxo83sfolio.eu-central-1.rds.amazonaws.com',
   user: 'root',
-  password: 'yourpassword',
+  password: 'PatDocTest',
   database: 'Patientenprofile'
 });
 
@@ -25,7 +25,7 @@ db.connect(err => {
   console.log('Connected to the MySQL database.');
 });
 
-app.post('/add-step7-data', (req, res) => {
+app.post('/step7', (req, res) => {
   const { evaluation, nurse, management } = req.body;
   const patientId = req.body.patientId; // Assuming patientId is provided in the request body
 
