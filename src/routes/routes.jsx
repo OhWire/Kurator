@@ -16,6 +16,8 @@ import DokumentationPflegeplanungMobilitaet from '../components/Doku/aufnahme/Do
 import Register from '../components/Register/register';
 import ConfirmPage from '../components/Register/ConfirmPage';
 import Mitarbeiterprofil from '../components/Mitarbeiterprofil/Mitarbeiterprofil';
+import { element } from 'three/examples/jsm/nodes/Nodes.js';
+import SISForm from '../components/patientenprofil/_MedInfo/SIS';
 // Import other components for different paths
 
 const LoginPage = lazy(() => import('../components/Login/Login'));
@@ -30,6 +32,7 @@ const routes = [
     { path: "/step5", element: <Step5 /> },
     { path: "/step6", element: <Step6 /> },
     { path: "/step7", element: <Step7 /> },
+    {path: "/SIS", element: <SISForm/>},
     
     { path: "/dokumentation_pflegeplanung_kommunikation", element: <DokumentationPflegeplanungKommunikation /> },
     { path: "/dokumentation_pflegeplanung_mobilitaet", element: <DokumentationPflegeplanungMobilitaet /> },
