@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const db = mysql.createConnection({
   host: 'pd-db.cgxo83sfolio.eu-central-1.rds.amazonaws.com',
   user: 'root',
-  password: 'yourpassword',
+  password: 'PatDocTest',
   database: 'Patientenprofile'
 });
 
