@@ -84,58 +84,133 @@ app.get('/management/:patientId', (req, res) => {
 app.post('/step7', (req, res) => {
   const { evaluation, nurse, management, patientId } = req.body;
 
-  if (!patientId) {
-    return res.status(400).json({ error: 'patientId is required' });
-  }
-
-  // Insert evaluation data
-  const insertEvaluationData = evaluation.map(evaluationItem => {
+  const generatePatientIdAndInsertData = () => {
     return new Promise((resolve, reject) => {
-      const query = `
-        INSERT INTO Evaluation (patient_id, name, responsible, frequency, notes)
-        VALUES (?, ?, ?, ?, ?)
-      `;
-      db.query(query, [
-        patientId,
-        evaluationItem.name,
-        evaluationItem.responsible,
-        evaluationItem.frequency,
-        evaluationItem.notes
-      ], (err, result) => {
+      const insertPatientQuery = `INSERT INTO Stammdaten () VALUES ()`;
+      db.query(insertPatientQuery, (err, result) => {
         if (err) {
-          console.error('Fehler beim Einfügen der Evaluation:', err);
-          return reject('Fehler beim Einfügen der Evaluation');
+          console.error('Fehler beim Erstellen der neuen Patientendaten:', err);
+          return reject('Fehler beim Erstellen der neuen Patientendaten');
         }
-        resolve(result);
+        const newPatientId = result.insertId;
+
+        const insertEvaluationData = evaluation.map(evaluationItem => {
+          return new Promise((resolve, reject) => {
+            const query = `
+              INSERT INTO Evaluation (patient_id, name, responsible, frequency, notes)
+              VALUES (?, ?, ?, ?, ?)
+            `;
+            db.query(query, [
+              newPatientId,
+              evaluationItem.name,
+              evaluationItem.responsible,
+              evaluationItem.frequency,
+              evaluationItem.notes
+            ], (err, result) => {
+              if (err) {
+                console.error('Fehler beim Einfügen der Evaluation:', err);
+                return reject('Fehler beim Einfügen der Evaluation');
+              }
+              resolve(result);
+            });
+          });
+        });
+
+        const insertNurseData = new Promise((resolve, reject) => {
+          const nurseQuery = `INSERT INTO Nurse (patient_id, nurse) VALUES (?, ?)`;
+          db.query(nurseQuery, [newPatientId, nurse], (err, result) => {
+            if (err) {
+              console.error('Fehler beim Einfügen der Nurse-Daten:', err);
+              return reject('Fehler beim Einfügen der Nurse-Daten');
+            }
+            resolve(result);
+          });
+        });
+
+        const insertManagementData = new Promise((resolve, reject) => {
+          const managementQuery = `INSERT INTO Management (patient_id, management) VALUES (?, ?)`;
+          db.query(managementQuery, [newPatientId, management], (err, result) => {
+            if (err) {
+              console.error('Fehler beim Einfügen der Management-Daten:', err);
+              return reject('Fehler beim Einfügen der Management-Daten');
+            }
+            resolve(result);
+          });
+        });
+
+        Promise.all([...insertEvaluationData, insertNurseData, insertManagementData])
+          .then(() => resolve('Daten erfolgreich eingefügt'))
+          .catch(error => reject(error));
       });
     });
-  });
+  };
 
-  // Insert nurse data
-  const insertNurseData = new Promise((resolve, reject) => {
-    const nurseQuery = `INSERT INTO Nurse (patient_id, nurse) VALUES (?, ?)`;
-    db.query(nurseQuery, [patientId, nurse], (err, result) => {
+  const checkPatientExists = new Promise((resolve, reject) => {
+    const query = `SELECT id FROM Stammdaten WHERE id = ?`;
+    db.query(query, [patientId], (err, results) => {
       if (err) {
-        console.error('Fehler beim Einfügen der Nurse-Daten:', err);
-        return reject('Fehler beim Einfügen der Nurse-Daten');
+        console.error('Fehler beim Überprüfen der Stammdaten:', err);
+        return reject('Fehler beim Überprüfen der Stammdaten');
       }
-      resolve(result);
+      if (results.length === 0) {
+        return generatePatientIdAndInsertData()
+          .then(resolve)
+          .catch(reject);
+      }
+      resolve(patientId);
     });
   });
 
-  // Insert management data
-  const insertManagementData = new Promise((resolve, reject) => {
-    const managementQuery = `INSERT INTO Management (patient_id, management) VALUES (?, ?)`;
-    db.query(managementQuery, [patientId, management], (err, result) => {
-      if (err) {
-        console.error('Fehler beim Einfügen der Management-Daten:', err);
-        return reject('Fehler beim Einfügen der Management-Daten');
-      }
-      resolve(result);
-    });
-  });
+  checkPatientExists
+    .then((validPatientId) => {
+      if (validPatientId === patientId) {
+        const insertEvaluationData = evaluation.map(evaluationItem => {
+          return new Promise((resolve, reject) => {
+            const query = `
+              INSERT INTO Evaluation (patient_id, name, responsible, frequency, notes)
+              VALUES (?, ?, ?, ?, ?)
+            `;
+            db.query(query, [
+              patientId,
+              evaluationItem.name,
+              evaluationItem.responsible,
+              evaluationItem.frequency,
+              evaluationItem.notes
+            ], (err, result) => {
+              if (err) {
+                console.error('Fehler beim Einfügen der Evaluation:', err);
+                return reject('Fehler beim Einfügen der Evaluation');
+              }
+              resolve(result);
+            });
+          });
+        });
 
-  Promise.all([...insertEvaluationData, insertNurseData, insertManagementData])
+        const insertNurseData = new Promise((resolve, reject) => {
+          const nurseQuery = `INSERT INTO Nurse (patient_id, nurse) VALUES (?, ?)`;
+          db.query(nurseQuery, [patientId, nurse], (err, result) => {
+            if (err) {
+              console.error('Fehler beim Einfügen der Nurse-Daten:', err);
+              return reject('Fehler beim Einfügen der Nurse-Daten');
+            }
+            resolve(result);
+          });
+        });
+
+        const insertManagementData = new Promise((resolve, reject) => {
+          const managementQuery = `INSERT INTO Management (patient_id, management) VALUES (?, ?)`;
+          db.query(managementQuery, [patientId, management], (err, result) => {
+            if (err) {
+              console.error('Fehler beim Einfügen der Management-Daten:', err);
+              return reject('Fehler beim Einfügen der Management-Daten');
+            }
+            resolve(result);
+          });
+        });
+
+        return Promise.all([...insertEvaluationData, insertNurseData, insertManagementData]);
+      }
+    })
     .then(() => {
       res.status(200).json({ message: 'Daten erfolgreich eingefügt' });
     })
