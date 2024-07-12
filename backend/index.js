@@ -82,8 +82,11 @@ app.get('/management/:patientId', (req, res) => {
 
 // Endpunkt, um Evaluation-Daten hinzuzufügen
 app.post('/step7', (req, res) => {
-  const { evaluation, nurse, management } = req.body;
-  const patientId = req.body.patientId; // Assuming patientId is provided in the request body
+  const { evaluation, nurse, management, patientId } = req.body;
+
+  if (!patientId) {
+    return res.status(400).json({ error: 'patientId is required' });
+  }
 
   // Insert evaluation data
   const insertEvaluationData = evaluation.map(evaluationItem => {
@@ -137,7 +140,8 @@ app.post('/step7', (req, res) => {
       res.status(200).json({ message: 'Daten erfolgreich eingefügt' });
     })
     .catch(error => {
-      res.status(500).json({ error });
+      console.error('Fehler beim Einfügen der Daten:', error);
+      res.status(500).json({ error: 'Fehler beim Einfügen der Daten', details: error });
     });
 });
 

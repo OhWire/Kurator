@@ -37,6 +37,7 @@ const Step7 = () => {
       evaluation: values.evaluation,
       nurse: values.nurse,
       management: values.management,
+      patientId: step1Data.patientId, // Assuming patientId is part of step1Data or another step's data
     };
 
     axios.post('http://3.124.242.78:3001/step7', completeData)
@@ -45,7 +46,7 @@ const Step7 = () => {
       })
       .catch(error => {
         console.error('Fehler beim Speichern der Patientendaten:', error);
-        console.log(completeData);
+        console.log('Daten:', completeData); // Loggen Sie die Daten auch im Fehlerfall
       });
   };
 
