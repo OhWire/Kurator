@@ -30,7 +30,6 @@ const PatientItem = ({ patient }) => {
     window.location.href = '/Dokumente';
   };
 
-
   const getPosition = () => {
     const percentage = (patient.tasksCompleted / totalTasks) * 100;
     return `${percentage}%`;

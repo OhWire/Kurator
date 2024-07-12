@@ -26,12 +26,12 @@ db.connect(err => {
 });
 
 // Endpunkt, um alle Stammdaten abzurufen
-app.get('/stammdaten', (req, res) => {
-  const query = `SELECT * FROM Stammdatenblatt`;
+app.get('/patients', (req, res) => {
+  const query = `SELECT * FROM Stammdaten`;
   db.query(query, (err, results) => {
     if (err) {
-      console.error('Fehler beim Abrufen der Stammdaten:', err);
-      res.status(500).json({ error: 'Fehler beim Abrufen der Stammdaten' });
+      console.error('Fehler beim Abrufen der Patientendaten:', err);
+      res.status(500).json({ error: 'Fehler beim Abrufen der Patientendaten' });
       return;
     }
     res.status(200).json(results);

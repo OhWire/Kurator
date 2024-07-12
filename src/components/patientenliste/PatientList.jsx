@@ -1,22 +1,20 @@
-// PatientList.js
 import React, { useState, useEffect } from 'react';
 import PatientItem from './PatientItem';
-import { CiFilter } from "react-icons/ci";
-import { CiCirclePlus } from "react-icons/ci";
+import { CiFilter, CiCirclePlus } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 
 const PatientList = () => {
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
-    fetch('/patientsData.json')
+    fetch('http://localhost:3001/patients')  // Ändern Sie die URL entsprechend Ihrer Serverkonfiguration
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
-      .then(data => setPatients(data.patients))
+      .then(data => setPatients(data))
       .catch(error => console.error('Error fetching patient data:', error));
   }, []);
 
