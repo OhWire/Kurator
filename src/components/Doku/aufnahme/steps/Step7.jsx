@@ -39,7 +39,7 @@ const Step7 = () => {
       management: values.management,
     };
 
-    axios.post('http://3.70.129.139:3001/step7', completeData)
+    axios.post('http://18.198.203.91:3001/step7', completeData)
       .then(response => {
         setShowPopup(true);
       })
