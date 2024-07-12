@@ -25,6 +25,12 @@ const PatientItem = ({ patient }) => {
     window.location.href = '/SIS';
   };
 
+  const handleDocsClick = (event) => {
+    event.stopPropagation();
+    window.location.href = '/Dokumente';
+  };
+
+
   const getPosition = () => {
     const percentage = (patient.tasksCompleted / totalTasks) * 100;
     return `${percentage}%`;
@@ -91,7 +97,7 @@ const PatientItem = ({ patient }) => {
           </button>
           <button
             className='flex border border-gray-400 border-opacity-60 w-10 h-10 sm:w-10 sm:h-10 lg:w-12 lg:h-12 justify-center items-center rounded-full bg-custom-green m-1 drop-shadow-md transform transition-all hover:translate-y-[-4px] hover:shadow-lg hover:bg-opacity-35'
-            onClick={(event) => event.stopPropagation()}
+            onClick={handleDocsClick}
           >
             <CiFolderOn className='fill-custom-dark-gray opacity-100 h-4 w-4 sm:h-4 sm:w-4 lg:h-8 lg:w-8' />
           </button>

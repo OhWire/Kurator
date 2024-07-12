@@ -1,11 +1,49 @@
 {
-    "employee": {
-      "name": "John Doe",
+  "employees": [
+    {
+      "id": 1,
+      "name": "Max Mustermann",
       "birthYear": 1985,
-      "gender": "Male",
+      "gender": "Männlich",
       "location": "Berlin",
-      "address": "123 Main Street",
-      "position": "Nurse"
+      "address": "Musterstraße 1, 12345 Berlin",
+      "position": "IT-Projektmanager",
+      "qualifications": "Master in Informatik, Zertifizierung als Scrum Master",
+      "skills": "Projektmanagement, Agile Methoden, Teamführung, Java-Entwicklung",
+      "experience": "5 Jahre Erfahrung in der Softwareentwicklung, 2 Jahre als Teamleiter",
+      "interests": "Künstliche Intelligenz, Mountainbiking",
+      "careerGoals": "Weiterentwicklung zum Senior Projektmanager, Spezialisierung in KI-Projekten",
+      "contact": "max.mustermann@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Julia Müller",
+      "birthYear": 1990,
+      "gender": "Weiblich",
+      "location": "München",
+      "address": "Beispielstraße 2, 54321 München",
+      "position": "Marketing Specialist",
+      "qualifications": "Bachelor in Marketing, Google Analytics-Zertifikat",
+      "skills": "Digitales Marketing, SEO, Content-Erstellung, Social Media Management",
+      "experience": "3 Jahre Erfahrung in einer Werbeagentur, erfolgreiches Management mehrerer Social Media Kampagnen",
+      "interests": "Grafikdesign, Reisen",
+      "careerGoals": "Entwicklung zur Marketing-Managerin, Vertiefung der Kenntnisse in digitalen Werbestrategien",
+      "contact": "julia.mueller@example.com"
+    },
+    {
+      "id": 3,
+      "name": "Hans Schmidt",
+      "birthYear": 1975,
+      "gender": "Männlich",
+      "location": "Hamburg",
+      "address": "Hamburger Straße 3, 98765 Hamburg",
+      "position": "HR-Manager",
+      "qualifications": "Diplom in Betriebswirtschaft, Zertifizierung in Personalmanagement",
+      "skills": "Personalmanagement, Konfliktlösung, Organisationsentwicklung",
+      "experience": "10 Jahre Erfahrung im HR-Bereich, 5 Jahre als HR-Manager",
+      "interests": "Lesen, Wandern",
+      "careerGoals": "Weiterbildung im Bereich Arbeitsrecht, Entwicklung zum Senior HR-Manager",
+      "contact": "hans.schmidt@example.com"
     }
-  }
-  
+  ]
+}

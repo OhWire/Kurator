@@ -44,7 +44,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="flex w-[50%] h-full flex-col z-10 ">
-          <div className="flex justify-center items-center w-full h-[45%] my-6">
+          <div className="flex justify-center items-center w-full h-[45%] my-4">
             <div className="flex flex-col w-full h-full  border-2 border-gray-200 border-opacity-15 bg-opacity-65 text-black bg-custom-light-gray acdrop-shadow-2xl rounded-xl p-6 overflow-y-auto custom-scrollbar">
               <h2 className="mb-6 text-2xl font-lato font-semibold">Benachrichtigungen</h2>
               <div>
@@ -55,7 +55,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="flex z-10 flex-col w-full h-[50%] rounded-xl drop-shadow-2xl m-6 bg-custom-light-gray bg-opacity-65 border-2 border-gray-200 border-opacity-15 overflow-y-auto custom-scrollbar">
+          <div className="flex z-10 flex-col w-full h-[50%] rounded-xl drop-shadow-2xl my-4 bg-custom-light-gray bg-opacity-65 border-2 border-gray-200 border-opacity-15 overflow-y-auto custom-scrollbar">
             <div className="flex flex-col p-6 justify-center rounded-xl  text-black  custom-scrollbar">
               <h2 className="pb-4 text-2xl font-lato font-semibold">Übergabe</h2>
               <div className="flex items-center p-2 my-4   rounded-2xl bg-white bg-opacity-35">

@@ -10,7 +10,7 @@ import Step4 from '../components/Doku/aufnahme/steps/Step4';
 import Step5 from '../components/Doku/aufnahme/steps/Step5';
 import Step6 from '../components/Doku/aufnahme/steps/Step6';
 import Step7 from '../components/Doku/aufnahme/steps/Step7';
-
+import Dokumente from "../components/patientenprofil/Dokumente/Dokumente"
 import DokumentationPflegeplanungKommunikation from '../components/Doku/aufnahme/DokumentationPflegeplanungKommunikation';
 import DokumentationPflegeplanungMobilitaet from '../components/Doku/aufnahme/DokumentationPflegeplanungMobilitaet';
 import Register from '../components/Register/register';
@@ -18,6 +18,7 @@ import ConfirmPage from '../components/Register/ConfirmPage';
 import Mitarbeiterprofil from '../components/Mitarbeiterprofil/Mitarbeiterprofil';
 import { element } from 'three/examples/jsm/nodes/Nodes.js';
 import SISForm from '../components/patientenprofil/_MedInfo/SIS';
+import PatientInfoComponent from '../components/patientenprofil/_MedInfo/last/letzteseite';
 // Import other components for different paths
 
 const LoginPage = lazy(() => import('../components/Login/Login'));
@@ -33,6 +34,7 @@ const routes = [
     { path: "/step6", element: <Step6 /> },
     { path: "/step7", element: <Step7 /> },
     {path: "/SIS", element: <SISForm/>},
+    {path: "/last", element: <PatientInfoComponent/>},
     
     { path: "/dokumentation_pflegeplanung_kommunikation", element: <DokumentationPflegeplanungKommunikation /> },
     { path: "/dokumentation_pflegeplanung_mobilitaet", element: <DokumentationPflegeplanungMobilitaet /> },
@@ -42,7 +44,8 @@ const routes = [
     { path: "/PatientenProfil/:id", element: <PatientenProfil /> },
     { path: "/register", element: <Register /> },
     { path: "/confirm", element: <ConfirmPage/>},
-    { path: "/MitarbeiterProfil/:id", element: <Mitarbeiterprofil/> }
+    { path: "/MitarbeiterProfil/:id", element: <Mitarbeiterprofil/> },
+    { path: "/Dokumente", ellement: <Dokumente/>}
 ];
 
 export default routes;
