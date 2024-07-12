@@ -16,9 +16,9 @@ async function executeSQLFile(connection, filePath) {
 // Funktion, um die Datenbank und Tabellen zu initialisieren
 async function initDatabase() {
     const connection = await mysql.createConnection({
-        host: 'pd-db.cgxo83sfolio.eu-central-1.rds.amazonaws.com',
-        user: 'root',
-        password: 'PatDocTest',
+        host: 'localhost',  // Ändere dies, falls du eine andere Datenbankadresse verwendest
+        user: 'root',       // Ändere dies zu deinem Datenbankbenutzernamen
+        password: 'password', // Ändere dies zu deinem Datenbankpasswort
         multipleStatements: true // Erlaubt mehrere SQL-Anweisungen in einer Abfrage
     });
 

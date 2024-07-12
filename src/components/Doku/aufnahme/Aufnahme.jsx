@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaFilter } from 'react-icons/fa';
 import { Formik, Form, Field } from 'formik';
+import axios from 'axios';
 
 const Aufnahme = () => {
   const navigate = useNavigate();
+  const [stammdaten, setStammdaten] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/stammdaten')
+      .then(response => {
+        setStammdaten(response.data);
+      })
+      .catch(error => {
+        console.error('Fehler beim Abrufen der Stammdaten:', error);
+      });
+  }, []);
 
   return (
     <Formik
