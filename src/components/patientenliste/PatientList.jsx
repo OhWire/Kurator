@@ -9,14 +9,14 @@ const PatientList = () => {
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
-    fetch('/patients.json')
+    fetch('/patientsData.json')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
-      .then(data => setPatients(data))
+      .then(data => setPatients(data.patients))
       .catch(error => console.error('Error fetching patient data:', error));
   }, []);
 

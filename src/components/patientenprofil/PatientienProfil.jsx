@@ -20,9 +20,9 @@ const PatientenProfil = () => {
       case 'Checkliste':
         return <Checklist />;
       case 'Medizinische Informationen':
-        return <MedizinischeInfo />;
+        return <MedizinischeInfo patient={patient} />;
       case 'Biografie':
-        return <Biografie />;
+        return <Biografie biography={patient.biography || 'Keine Biografie verfügbar'} />;
       case 'Vitalzeichenprotokoll':
         return <Vitalzeichenprotokoll />;
       case 'Aktivitäten':

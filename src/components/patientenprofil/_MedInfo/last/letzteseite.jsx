@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import patientData from './patientData.json'; // Importing JSON directly
 
-const PatientInfoComponent = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    // Simulating fetch from an API or file read
-    setData(patientData);
-  }, []);
-
-  if (!data) {
-    return <div>Loading...</div>; // Handle loading state if needed
-  }
-
+const PatientInfoComponent = ({ profile }) => {
   const {
     vorname,
     nachname,
@@ -36,14 +24,12 @@ const PatientInfoComponent = () => {
     importantInfo,
     medications,
     therapies
-  } = data;
+  } = profile;
 
   return (
-    <div className="flex-col overflow-y-auto patient-info z-20 flex max-w-screen h-screen">
+    <div className="patient-info z-20 overflow-y-auto">
       <h2>Patient Information</h2>
-      <div>
-        <strong>Name:</strong> {vorname} {nachname}
-      </div>
+      <div><strong>Name:</strong> {vorname} {nachname}</div>
       <div><strong>Geburtsdatum:</strong> {geburtsdatum}</div>
       <div><strong>Geschlecht:</strong> {geschlecht}</div>
       <div><strong>Adresse:</strong> {adresse}, {plz} {stadt}</div>
@@ -127,4 +113,35 @@ const PatientInfoComponent = () => {
   );
 };
 
-export default PatientInfoComponent;
+const PatientListComponent = () => {
+  const [patientsData, setPatientsData] = useState([]);
+  const [selectedPatient, setSelectedPatient] = useState(null);
+
+  useEffect(() => {
+    fetch('/patientsData.json')
+      .then(response => response.json())
+      .then(data => setPatientsData(data.patients))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  const handleClick = (patient) => {
+    setSelectedPatient(patient.profile);
+  };
+
+  return (
+    <div className="patient-list z-20 overflow-y-auto">
+      <h1>Patientenliste</h1>
+      <ul>
+        {patientsData.map((patient) => (
+          <li className='cursor-pointer py-2 bg-pink-200 w-32 border-2 border-red-200 rounded-xl' key={patient.id} onClick={() => handleClick(patient)}>
+            {patient.name} (Zimmer: {patient.room})
+          </li>
+        ))}
+      </ul>
+
+      {selectedPatient && <PatientInfoComponent profile={selectedPatient} />}
+    </div>
+  );
+};
+
+export default PatientListComponent;

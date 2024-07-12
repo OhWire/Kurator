@@ -1,0 +1,157 @@
+{
+  "patients": [
+    {
+      "id": 1,
+      "name": "Max Mustermann",
+      "room": "030",
+      "birthYear": 1934,
+      "notes": "",
+      "tasksCompleted": 7,
+      "profile": {
+        "vorname": "Max",
+        "nachname": "Mustermann",
+        "geburtsdatum": "1934-01-01",
+        "geschlecht": "männlich",
+        "adresse": "Example Street 1",
+        "plz": "12345",
+        "stadt": "Example City",
+        "email": "max.mustermann@example.com",
+        "telefon": "0123456789",
+        "notfallkontakt": "112",
+        "notfalltelefon": "0123456789",
+        "versicherungsnummer": "123456789",
+        "zimmernummer": "030",
+        "nationalitaet": "Deutsch",
+        "allergies": [],
+        "categories": [],
+        "diagnoses": "Keine Diagnose",
+        "evaluation": [],
+        "goalsAndMeasures": [],
+        "importantInfo": "",
+        "medications": [],
+        "therapies": ""
+      }
+    },
+    {
+      "id": 2,
+      "name": "Anna Müller",
+      "room": "028",
+      "biography": "Das hier ist eine Testbio",
+      "birthYear": 1935,
+      "notes": "Anna Müller ist auffällig reich, sie hat jedoch vergessen, dass sie Enkel hat, vielleicht sollte ich sie daran erinnern",
+      "tasksCompleted": 3,
+      "profile": {
+        "vorname": "Anna",
+        "nachname": "Müller",
+        "geburtsdatum": "1935-01-01",
+        "geschlecht": "weiblich",
+        "adresse": "Seerichterstraße 9",
+        "plz": "86911",
+        "stadt": "Diessen",
+        "email": "Scholljohannes1@gmail.com",
+        "telefon": "012341515",
+        "notfallkontakt": "185817237172839",
+        "notfalltelefon": "1245815z7981",
+        "versicherungsnummer": "1248175619",
+        "zimmernummer": "22",
+        "nationalitaet": "Deutsch",
+        "allergies": [
+          {
+            "type": "Nesselsucht",
+            "details": "ssd",
+            "intensity": "Mittel",
+            "treatment": "sdada"
+          },
+          {
+            "type": "",
+            "details": "",
+            "intensity": "",
+            "treatment": ""
+          }
+        ],
+        "categories": [
+          {
+            "name": "Dekubitus Risiko",
+            "intensity": "Hoch",
+            "details": "Keine Diagnose"
+          },
+          {
+            "name": "Sturzrisiko",
+            "intensity": "Sehr gering",
+            "details": "Keine Diagnose"
+          },
+          {
+            "name": "Mangelernährung",
+            "intensity": "Gering",
+            "details": "Keine Diagnose"
+          },
+          {
+            "name": "Dehydrationsrisiko",
+            "intensity": "Gering",
+            "details": "Keine Diagnose"
+          },
+          {
+            "name": "Schmerzmanagement",
+            "intensity": "Gering",
+            "details": "Keine Diagnose"
+          }
+        ],
+        "diagnoses": "Keine Diagnose",
+        "evaluation": [
+          {
+            "name": "Regelmäßige Überprüfung der Pflegeplanung",
+            "frequency": "Monatlich",
+            "responsible": "Keine Diagnose",
+            "notes": "Keine Diagnose"
+          },
+          {
+            "name": "Anpassungen basierend auf aktuellen Bedürfnissen und Veränderungen",
+            "frequency": "Täglich",
+            "responsible": "Keine Diagnose",
+            "notes": "Keine Diagnose"
+          }
+        ],
+        "goalsAndMeasures": [
+          {
+            "name": "Kurzfristige Ziele",
+            "goal": "Keine Diagnose",
+            "measures": "Keine Diagnose",
+            "responsibilities": "Angehörige",
+            "status": "Abgeschlossen"
+          },
+          {
+            "name": "Langfristige Ziele",
+            "goal": "Keine Diagnose",
+            "measures": "Keine Diagnose",
+            "responsibilities": "Arzt",
+            "status": "In Bearbeitung"
+          },
+          {
+            "name": "Konkrete Maßnahmen zur Zielerreichung",
+            "goal": "Keine Diagnose",
+            "measures": "Keine Diagnose",
+            "responsibilities": "Arzt",
+            "status": "Ausstehend"
+          },
+          {
+            "name": "Verantwortlichkeiten und Zuständigkeiten",
+            "goal": "Keine Diagnose",
+            "measures": "Keine Diagnose",
+            "responsibilities": "Pflegekraft",
+            "status": "In Bearbeitung"
+          }
+        ],
+        "importantInfo": "Keine Diagnose",
+        "medications": [
+          {
+            "name": "Medikament B",
+            "dose": "5mg",
+            "duration": "3 Monate",
+            "frequency": "2x täglich"
+          }
+        ],
+        "therapies": "Keine Diagnose"
+      }
+    }
+  ]
+}
