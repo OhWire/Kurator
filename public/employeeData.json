@@ -1,7 +1,7 @@
 {
   "employees": [
     {
-      "id": 1,
+      "employeeId": 1,
       "name": "Max Mustermann",
       "birthYear": 1985,
       "gender": "Männlich",
@@ -16,7 +16,7 @@
       "contact": "max.mustermann@example.com"
     },
     {
-      "id": 2,
+      "employeeId": 2,
       "name": "Julia Müller",
       "birthYear": 1990,
       "gender": "Weiblich",
@@ -31,7 +31,7 @@
       "contact": "julia.mueller@example.com"
     },
     {
-      "id": 3,
+      "employeeId": 3,
       "name": "Hans Schmidt",
       "birthYear": 1975,
       "gender": "Männlich",
