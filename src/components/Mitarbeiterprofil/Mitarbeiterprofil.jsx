@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Granny from '../img/Granny1.jpeg';
-import employeeData from "./employeeData.json";
 import Persönliches from './Persönliches';
 import Qualifikationen from './Qualifikationen';
 import Kontakt from './Kontakt';
@@ -10,12 +9,22 @@ const Mitarbeiterprofil = () => {
   const { state } = useLocation();
   const { employeeId } = state || {};
   const [activeTab, setActiveTab] = useState('Persönliches');
-  const [employee, setEmployee] = useState(() => {
-    const emp = Array.isArray(employeeData.employees) ? employeeData.employees.find(emp => emp.id === employeeId) : null;
-    return emp || employeeData.employees[0]; // Fallback to the first employee if no ID is provided
-  });
+  const [employeeData, setEmployeeData] = useState(null);
+  const [employee, setEmployee] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [editableEmployee, setEditableEmployee] = useState(employee);
+  const [editableEmployee, setEditableEmployee] = useState(null);
+
+  useEffect(() => {
+    fetch('/employeeData.json')
+      .then((response) => response.json())
+      .then((data) => {
+        setEmployeeData(data);
+        const emp = Array.isArray(data.employees) ? data.employees.find(emp => emp.id === employeeId) : null;
+        setEmployee(emp);
+        setEditableEmployee(emp);
+      })
+      .catch((error) => console.error('Error fetching employee data:', error));
+  }, [employeeId]);
 
   useEffect(() => {
     setEditableEmployee(employee);
@@ -50,24 +59,22 @@ const Mitarbeiterprofil = () => {
   }
 
   return (
-    <div className="p-4 flex flex-col w-full h-full justify-start items-start z-20 ">
-      <div className="flex flex-col rounded-2xl p-4 w-full h-full ">
-        <div className="flex justify-between items-center w-full mb-12">
-          <div className="flex items-center bg-custom-green bg-opacity-20 px-6 py-6 rounded-xl shadow-lg">
-            <div className="flex items-center justify-center">
-              <img
-                src={Granny}
-                alt={employee.name}
-                className="flex border-4 border-custom-dark-gray border-opacity-40 justify-center align-center text-white w-16 h-16 rounded-full mr-4 bg-custom-green"
-              />
-            </div>
+    <div className="p-4 flex flex-col w-full h-full justify-start items-center z-20 ">
+      <div className="flex flex-col rounded-2xl p-6 w-full h-full overflow-y-auto  shadow-lg">
+        <div className="flex flex-col items-center w-full mb-8">
+          <div className="flex items-center bg-custom-green bg-opacity-20 px-6 py-6 rounded-xl shadow-md w-full">
+            <img
+              src={Granny}
+              alt={employee.name}
+              className="border-4 border-custom-dark-gray border-opacity-40 w-24 h-24 rounded-full mr-4 bg-custom-green"
+            />
             <div className="flex flex-col">
-              <h1 className="font-fjalla text-custom-dark-gray text-2xl py-1">{employee.name.toUpperCase()}</h1>
-              <p className="font-lato font-semibold text-xs py-1">ALTER: {new Date().getFullYear() - employee.birthYear} JAHRE</p>
-              <p className="font-lato font-semibold text-xs py-1">GESCHLECHT: {employee.gender || 'UNBEKANNT'}</p>
-              <p className="font-lato font-semibold text-xs py-1">AUFENTHALTSORT: {employee.location || 'UNBEKANNT'}</p>
-              <p className="font-lato font-semibold text-xs py-1">ADRESSE: {employee.address}</p>
-              <p className="font-lato font-semibold text-xs py-1">POSITION: {employee.position}</p>
+              <h1 className="font-fjalla text-custom-dark-gray text-3xl py-1">{employee.name.toUpperCase()}</h1>
+              <p className="font-lato font-semibold text-sm py-1">ALTER: {new Date().getFullYear() - employee.birthYear} JAHRE</p>
+              <p className="font-lato font-semibold text-sm py-1">GESCHLECHT: {employee.gender || 'UNBEKANNT'}</p>
+              <p className="font-lato font-semibold text-sm py-1">AUFENTHALTSORT: {employee.location || 'UNBEKANNT'}</p>
+              <p className="font-lato font-semibold text-sm py-1">ADRESSE: {employee.address}</p>
+              <p className="font-lato font-semibold text-sm py-1">POSITION: {employee.position}</p>
               <button
                 onClick={() => setIsEditing(true)}
                 className="mt-4 font-lato font-semibold text-sm py-1 bg-custom-dark-gray bg-opacity-25 hover:bg-opacity-100 transition-all duration-300 text-white rounded-xl px-4"
@@ -76,35 +83,37 @@ const Mitarbeiterprofil = () => {
               </button>
             </div>
           </div>
-          <div className="flex justify-end items-center space-x-6">
-            <button
-              className={`min-w-36 text-sm border z-20 bg-opacity-50 hover:bg-opacity-85 hover:text-white hover:bg-custom-dark-gray transition-all duration-300 font-Beba tracking-wider py-2 px-4 rounded-full ${activeTab === 'Persönliches' ? ' text-custom-dark-green drop-shadow-xl shadow-lg bg-custom-dark-gray' : 'bg-custom-light-gray border border-black border-opacity-15 bg-opacity-20 text-black'}`}
-              onClick={() => setActiveTab('Persönliches')}
-            >
-              Persönliches
-            </button>
-            <button
-              className={`min-w-36 text-sm border z-20 bg-opacity-50 hover:bg-opacity-85 hover:text-white hover:bg-custom-dark-gray transition-all duration-300 font-Beba tracking-wider py-2 px-4 rounded-full ${activeTab === 'Qualifikationen' ? ' text-custom-dark-green drop-shadow-xl shadow-lg bg-custom-dark-gray' : 'bg-custom-light-gray border border-black border-opacity-15 bg-opacity-20 text-black'}`}
-              onClick={() => setActiveTab('Qualifikationen')}
-            >
-              Qualifikationen
-            </button>
-            <button
-              className={`min-w-36 text-sm border z-20 bg-opacity-50 hover:bg-opacity-85 hover:text-white hover:bg-custom-dark-gray transition-all duration-300 font-Beba tracking-wider py-2 px-4 rounded-full ${activeTab === 'Kontakt' ? ' text-custom-dark-green drop-shadow-xl shadow-lg bg-custom-dark-gray' : 'bg-custom-light-gray bg-opacity-20 border border-black border-opacity-15 text-black'}`}
-              onClick={() => setActiveTab('Kontakt')}
-            >
-              Kontakt
-            </button>
-          </div>
         </div>
+        
+        <div className="flex justify-center items-center space-x-4 mb-8">
+          <button
+            className={`min-w-36 text-sm border z-20 bg-opacity-50 hover:bg-opacity-85 hover:text-white hover:bg-custom-dark-gray transition-all duration-300 font-Beba tracking-wider py-2 px-4 rounded-full ${activeTab === 'Persönliches' ? 'text-custom-dark-green drop-shadow-xl shadow-lg bg-custom-dark-gray' : 'bg-custom-light-gray border border-black border-opacity-15 bg-opacity-20 text-black'}`}
+            onClick={() => setActiveTab('Persönliches')}
+          >
+            Persönliches
+          </button>
+          <button
+            className={`min-w-36 text-sm border z-20 bg-opacity-50 hover:bg-opacity-85 hover:text-white hover:bg-custom-dark-gray transition-all duration-300 font-Beba tracking-wider py-2 px-4 rounded-full ${activeTab === 'Qualifikationen' ? 'text-custom-dark-green drop-shadow-xl shadow-lg bg-custom-dark-gray' : 'bg-custom-light-gray border border-black border-opacity-15 bg-opacity-20 text-black'}`}
+            onClick={() => setActiveTab('Qualifikationen')}
+          >
+            Qualifikationen
+          </button>
+          <button
+            className={`min-w-36 text-sm border z-20 bg-opacity-50 hover:bg-opacity-85 hover:text-white hover:bg-custom-dark-gray transition-all duration-300 font-Beba tracking-wider py-2 px-4 rounded-full ${activeTab === 'Kontakt' ? 'text-custom-dark-green drop-shadow-xl shadow-lg bg-custom-dark-gray' : 'bg-custom-light-gray bg-opacity-20 border border-black border-opacity-15 text-black'}`}
+            onClick={() => setActiveTab('Kontakt')}
+          >
+            Kontakt
+          </button>
+        </div>
+        
         {isEditing ? (
-          <div className="bg-custom-green bg-opacity-20 flex flex-col p-6 rounded-xl shadow-lg">
+          <div className="bg-custom-green bg-opacity-20 flex flex-col p-6 rounded-xl shadow-md w-full mb-8">
             <input
               type="text"
               name="name"
               value={editableEmployee.name}
               onChange={handleInputChange}
-              className="font-fjalla text-custom-dark-gray text-2xl py-1 bg-transparent"
+              className="font-fjalla text-custom-dark-gray text-xl py-1 bg-transparent"
             />
             <input
               type="number"
@@ -157,10 +166,10 @@ const Mitarbeiterprofil = () => {
             </div>
           </div>
         ) : null}
-      </div>
-
-      <div className="flex-grow w-full h-[130%] ">
-        {renderTabContent()}
+        
+        <div className="w-full">
+          {renderTabContent()}
+        </div>
       </div>
     </div>
   );
