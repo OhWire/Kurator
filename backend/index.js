@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 // MySQL-Verbindung
 const db = mysql.createConnection({
-  host: 'pd-db.cgxo83sfolio.eu-central-1.rds.amazonaws.com',
+  host: 'database-2.cjeguksiyehy.eu-central-1.rds.amazonaws.com',
   user: 'root',
   password: 'PatDocTest',
   database: 'Patientenprofile'
