@@ -3,26 +3,24 @@ import React from 'react';
 const MedizinischeInfo = ({ patient }) => {
   return (
     <div className="flex flex-col w-92 h-96 bg-custom-light-gray bg-opacity-65 border-2 border-gray-400 rounded-xl overflow-y-auto py-2 z-20">
-      <div className="flex">
-        <div className="flex flex-col p-2 mx-4">
-          <h2 className='text-2xl pb-2 font-Beba'>Anamnese:</h2>
-          <p className='font-ibm-plex-mono tracking-tight text-md'>{patient.profile.anamnese || 'Keine Anamnese verfügbar'}</p>
-        </div>
-    
-        <div className="flex flex-col p-2 mx-4">
-          <h2 className='text-2xl pb-2 font-Beba'>Aktuelle Probleme:</h2>
-          <p className='font-ibm-plex-mono tracking-tight text-md'>{patient.profile.aktuelleProbleme || 'Keine aktuellen Probleme verfügbar'}</p>
-        </div>
-    
-        <div className="flex flex-col p-2 mx-4">
-          <h2 className='text-2xl pb-2 font-Beba'>Diagnose:</h2>
-          <p className='font-ibm-plex-mono tracking-tight text-md'>{patient.profile.diagnoses || 'Keine Diagnose verfügbar'}</p>
-        </div>
-    
-        <div className="flex flex-col p-2 mx-4">
-          <h2 className='text-2xl pb-2 font-Beba'>Behandlung:</h2>
-          <p className='font-ibm-plex-mono tracking-tight text-md'>{patient.profile.behandlung || 'Keine Behandlung verfügbar'}</p>
-        </div>
+      <div className="flex flex-col p-2 mx-4">
+        <h2 className='text-2xl pb-2 font-Beba'>Anamnese:</h2>
+        <p className='font-ibm-plex-mono tracking-tight text-md'>{patient.profile.anamnese || 'Keine Anamnese verfügbar'}</p>
+      </div>
+      
+      <div className="flex flex-col p-2 mx-4">
+        <h2 className='text-2xl pb-2 font-Beba'>Aktuelle Probleme:</h2>
+        <p className='font-ibm-plex-mono tracking-tight text-md'>{patient.profile.aktuelleProbleme || 'Keine aktuellen Probleme verfügbar'}</p>
+      </div>
+      
+      <div className="flex flex-col p-2 mx-4">
+        <h2 className='text-2xl pb-2 font-Beba'>Diagnose:</h2>
+        <p className='font-ibm-plex-mono tracking-tight text-md'>{patient.profile.diagnoses || 'Keine Diagnose verfügbar'}</p>
+      </div>
+      
+      <div className="flex flex-col p-2 mx-4">
+        <h2 className='text-2xl pb-2 font-Beba'>Behandlung:</h2>
+        <p className='font-ibm-plex-mono tracking-tight text-md'>{patient.profile.behandlung || 'Keine Behandlung verfügbar'}</p>
       </div>
 
       <div className="flex flex-col p-2 mx-4">
