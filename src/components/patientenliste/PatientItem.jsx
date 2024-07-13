@@ -66,12 +66,12 @@ const PatientItem = ({ patient }) => {
                 className="text-2xl cursor-pointer sm:text-2xl md:text-xl font-lato hover:text-custom-dark-gray duration-200 transition-all"
                 onClick={handleProfileClick}
               >
-                {patient.name}
+                {patient.vorname} {patient.nachname}
               </h2>
             </div>
             <div className="flex flex-col items-center mx-4 px-2 rounded-xl bg-opacity-40 h-10">
-              <p className="font-lato text-sm p-0 px-2 text-black">Raum: {patient.room}</p>
-              <p className="font-lato text-sm p-0 px-2 text-black">geb. {patient.birthYear}</p>
+              <p className="font-lato text-sm p-0 px-2 text-black">Raum: {patient.zimmernummer}</p>
+              <p className="font-lato text-sm p-0 px-2 text-black">geb. {patient.geburtsdatum}</p>
             </div>
           </div>
         </div>

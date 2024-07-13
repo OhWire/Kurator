@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 // MySQL-Verbindung
 const db = mysql.createConnection({
-  host: 'database-1.cjeguksiyehy.eu-central-1.rds.amazonaws.com',
+  host: 'database-1.cjeguksiyehy.eu-central-1.rds.amazonaws.com', // Ändern Sie die URL entsprechend Ihrer MySQL-Konfiguration
   user: 'root',
   password: 'PatDocTest',
   database: 'Patientenprofile'
@@ -25,7 +25,7 @@ db.connect(err => {
   console.log('Verbunden mit der MySQL-Datenbank.');
 });
 
-// Endpunkt, um alle Stammdaten abzurufen
+// Endpunkt, um alle Patientendaten abzurufen
 app.get('/patients', (req, res) => {
   const query = `SELECT * FROM Stammdaten`;
   db.query(query, (err, results) => {
@@ -86,8 +86,8 @@ app.post('/step7', (req, res) => {
 
   const generatePatientIdAndInsertData = () => {
     return new Promise((resolve, reject) => {
-      const insertPatientQuery = `INSERT INTO Stammdaten () VALUES ()`;
-      db.query(insertPatientQuery, (err, result) => {
+      const insertPatientQuery = `INSERT INTO Stammdaten (vorname, nachname, geburtsdatum, geschlecht, nationalitaet, adresse, plz, stadt, land, telefon, email, versicherungsnummer, notfallkontakt, notfalltelefon, zimmernummer) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      db.query(insertPatientQuery, [ 'Vorname', 'Nachname', '2000-01-01', 'Geschlecht', 'Nationalität', 'Adresse', 'PLZ', 'Stadt', 'Land', 'Telefon', 'Email', 'Versicherungsnummer', 'Notfallkontakt', 'Notfalltelefon', 'Zimmernummer'], (err, result) => {
         if (err) {
           console.error('Fehler beim Erstellen der neuen Patientendaten:', err);
           return reject('Fehler beim Erstellen der neuen Patientendaten');
