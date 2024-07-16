@@ -2,7 +2,7 @@ import React, { lazy } from 'react';
 import Dashboard from '../components/dashboard/dashboard';
 import Dienstplan from '../components/dienstplan/dienstplan';
 import PatientList from '../components/patientenliste/PatientList';
-import PatientenProfil from '../components/patientenprofil/PatientenProfil';
+import PatientenProfil from '../components/patientenprofil/PatientienProfil';
 import Step1 from '../components/Doku/aufnahme/steps/Step1';
 import Step2 from '../components/Doku/aufnahme/steps/Step2';
 import Step3 from '../components/Doku/aufnahme/steps/Step3';
