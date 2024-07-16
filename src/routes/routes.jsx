@@ -2,7 +2,7 @@ import React, { lazy } from 'react';
 import Dashboard from '../components/dashboard/dashboard';
 import Dienstplan from '../components/dienstplan/dienstplan';
 import PatientList from '../components/patientenliste/PatientList';
-import PatientenProfil from '../components/patientenprofil/PatientienProfil';
+import PatientenProfil from '../components/patientenprofil/PatientenProfil';
 import Step1 from '../components/Doku/aufnahme/steps/Step1';
 import Step2 from '../components/Doku/aufnahme/steps/Step2';
 import Step3 from '../components/Doku/aufnahme/steps/Step3';
@@ -16,10 +16,8 @@ import DokumentationPflegeplanungMobilitaet from '../components/Doku/aufnahme/Do
 import Register from '../components/Register/register';
 import ConfirmPage from '../components/Register/ConfirmPage';
 import Mitarbeiterprofil from '../components/Mitarbeiterprofil/Mitarbeiterprofil';
-import { element } from 'three/examples/jsm/nodes/Nodes.js';
 import SISForm from '../components/patientenprofil/_MedInfo/SIS';
 import PatientInfoComponent from '../components/patientenprofil/_MedInfo/last/letzteseite';
-// Import other components for different paths
 
 const LoginPage = lazy(() => import('../components/Login/Login'));
 
@@ -33,19 +31,17 @@ const routes = [
     { path: "/step5", element: <Step5 /> },
     { path: "/step6", element: <Step6 /> },
     { path: "/step7", element: <Step7 /> },
-    {path: "/SIS", element: <SISForm/>},
-    {path: "/last", element: <PatientInfoComponent/>},
-    
+    { path: "/SIS", element: <SISForm /> },
+    { path: "/last", element: <PatientInfoComponent /> },
     { path: "/dokumentation_pflegeplanung_kommunikation", element: <DokumentationPflegeplanungKommunikation /> },
     { path: "/dokumentation_pflegeplanung_mobilitaet", element: <DokumentationPflegeplanungMobilitaet /> },
-    // Add other routes similarly
     { path: "/dienstplan", element: <Dienstplan /> },
     { path: "/patientenliste", element: <PatientList /> },
     { path: "/PatientenProfil/:id", element: <PatientenProfil /> },
     { path: "/register", element: <Register /> },
-    { path: "/confirm", element: <ConfirmPage/>},
-    { path: "/MitarbeiterProfil/:id", element: <Mitarbeiterprofil/> },
-    { path: "/Dokumente", ellement: <Dokumente/>}
+    { path: "/confirm", element: <ConfirmPage /> },
+    { path: "/MitarbeiterProfil/:id", element: <Mitarbeiterprofil /> },
+    { path: "/Dokumente", element: <Dokumente /> }
 ];
 
 export default routes;
