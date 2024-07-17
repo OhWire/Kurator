@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+// Basis Selektoren
 const selectStep1 = (state) => state.step1?.data || {};
 const selectStep2 = (state) => state.step2?.data || {};
 const selectStep3 = (state) => state.step3?.data || {};
@@ -7,6 +8,7 @@ const selectStep4 = (state) => state.step4?.data || {};
 const selectStep5 = (state) => state.step5?.data || {};
 const selectStep6 = (state) => state.step6?.data || {};
 
+// Memoisierte Selektoren
 export const makeSelectStep1Data = createSelector(
   [selectStep1],
   (step1Data) => step1Data
