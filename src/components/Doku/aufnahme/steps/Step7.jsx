@@ -3,6 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import {
+  makeSelectStep1Data,
+  makeSelectStep2Data,
+  makeSelectStep3Data,
+  makeSelectStep4Data,
+  makeSelectStep5Data,
+  makeSelectStep6Data
+} from './selectors'; // Passen Sie den Pfad entsprechend an
 
 const initialValues = {
   evaluation: [
@@ -19,13 +27,13 @@ const Step7 = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
 
-  // Fallbacks auf leere Objekte, falls ein Zustand undefined ist
-  const step1Data = useSelector((state) => state.step1?.data || {});
-  const step2Data = useSelector((state) => state.step2?.data || {});
-  const step3Data = useSelector((state) => state.step3?.data || {});
-  const step4Data = useSelector((state) => state.step4?.data || {});
-  const step5Data = useSelector((state) => state.step5?.data || {});
-  const step6Data = useSelector((state) => state.step6?.data || {});
+  // Verwenden Sie die memoisierten Selektoren
+  const step1Data = useSelector(makeSelectStep1Data);
+  const step2Data = useSelector(makeSelectStep2Data);
+  const step3Data = useSelector(makeSelectStep3Data);
+  const step4Data = useSelector(makeSelectStep4Data);
+  const step5Data = useSelector(makeSelectStep5Data);
+  const step6Data = useSelector(makeSelectStep6Data);
 
   const dispatch = useDispatch();
 
