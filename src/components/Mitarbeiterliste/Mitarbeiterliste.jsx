@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import PatientItem from './PatientItem';
+import MitarbeiterItem from './Mitarbeiteritem';
 import { CiFilter, CiCirclePlus } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 
-const PatientList = () => {
-  const [patients, setPatients] = useState([]);
+const MitarbeiterListe = () => {
+  const [mitarbeiter, setMitarbeiter] = useState([]);
 
   useEffect(() => {
-    fetch('./patientsData.json')
+    fetch('./employeeData.json')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
-      .then(data => setPatients(data))
-      .catch(error => console.error('Error fetching patient data:', error));
+      .then(data => {
+        if (Array.isArray(data)) {
+          setMitarbeiter(data);
+        } else {
+          console.error('Fetched data is not an array:', data);
+        }
+      })
+      .catch(error => console.error('Error fetching employee data:', error));
   }, []);
 
   return (
@@ -26,7 +32,7 @@ const PatientList = () => {
       data-aos-once="true" 
     >
       <div className="flex w-full h-32 justify-between items-center">
-        <h1 className="text-6xl tracking-wide mb-4 font-fjalla">Patientenliste</h1>
+        <h1 className="text-6xl tracking-wide mb-4 font-fjalla">Mitarbeiterliste</h1>
         <div className="flex w-full justify-end p-4">
           <div className="flex w-72 h-8 m-4 bg-custom-light drop-shadow-xl rounded-xl items-center hover:cursor-pointer">
             <input type="text" placeholder="Suchen..." className="text-gray-500 p-2 w-full rounded-xl" />
@@ -37,7 +43,7 @@ const PatientList = () => {
             </button>
           </div>
           <div className="flex">
-            <Link to="/step1" className='flex m-4'>
+            <Link to="/addEmployee" className='flex m-4'>
               <button>
                 <CiCirclePlus className='w-6 h-6 opacity-40 transition transform hover:opacity-70 duration-200' />
               </button>
@@ -46,12 +52,12 @@ const PatientList = () => {
         </div>
       </div>
       <div className="space-y-4">
-        {patients.map((patient) => (
-          <PatientItem key={patient.id} patient={patient} />
+        {mitarbeiter.map((employee) => (
+          <MitarbeiterItem key={employee.id} employee={employee} />
         ))}
       </div>
     </div>
   );
 };
 
-export default PatientList;
+export default MitarbeiterListe;

@@ -17,6 +17,9 @@ import ConfirmPage from '../components/Register/ConfirmPage';
 import Mitarbeiterprofil from '../components/Mitarbeiterprofil/Mitarbeiterprofil';
 import SISForm from '../components/patientenprofil/_MedInfo/SIS';
 import PatientInfoComponent from '../components/patientenprofil/_MedInfo/last/letzteseite';
+import { element } from 'three/examples/jsm/nodes/Nodes.js';
+import MitarbeiterListe from '../components/Mitarbeiterliste/Mitarbeiterliste';
+import Einstellungen from '../components/Einstellungen/Einstellungen';
 
 const LoginPage = lazy(() => import('../components/Login/Login'));
 
@@ -40,6 +43,8 @@ const routes = [
     { path: "/register", element: <Register /> },
     { path: "/confirm", element: <ConfirmPage /> },
     { path: "/MitarbeiterProfil/:id", element: <Mitarbeiterprofil /> },
+    { path: "/Mitarbeiterliste", element: <MitarbeiterListe/>},
+    { path: "/Einstellungen", element: <Einstellungen/>}
 ];
 
 export default routes;
