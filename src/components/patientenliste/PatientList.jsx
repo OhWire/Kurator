@@ -36,12 +36,7 @@ const PatientList = () => {
   }
 
   return (
-    <div className="z-20 p-6 pb-20 h-screen flex flex-col rounded-xl overflow-y-auto custom-scrollbar-container custom-scrollbar bg-opacity-80" 
-      data-aos="fade-zoom-in"
-      data-aos-easing="ease-in-out"
-      data-aos-duration="1000"
-      data-aos-once="true" 
-    >
+    <div className="z-20 p-6 pb-20 h-screen flex flex-col rounded-xl overflow-y-auto custom-scrollbar-container custom-scrollbar bg-opacity-80">
       <div className="flex w-full h-32 justify-between items-center">
         <h1 className="text-6xl tracking-wide mb-4 font-fjalla">Patientenliste</h1>
         <div className="flex w-full justify-end p-4">

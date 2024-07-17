@@ -87,7 +87,7 @@ const PatientenProfil = () => {
             <div className="flex space-x-4 justify-around items-center w-[60%]">
               <div className="flex flex-col">
                 <h1 className="font-fjalla text-custom-dark-gray text-2xl py-1">
-                  {patient.name ? patient.name.toUpperCase() : 'NAME NICHT VERFÜGBAR'}
+                  {patient.name  ? patient.name.toUpperCase() : 'NAME NICHT VERFÜGBAR'}
                 </h1>
                 <p className="font-lato font-semibold text-xs py-1">
                   ALTER: {patient.birthYear ? new Date().getFullYear() - patient.birthYear : 'UNBEKANNT'} JAHRE
