@@ -19,7 +19,7 @@ const Mitarbeiterprofil = () => {
       .then((response) => response.json())
       .then((data) => {
         setEmployeeData(data);
-        const emp = Array.isArray(data.employees) ? data.employees.find(emp => emp.id === employeeId) : null;
+        const emp = Array.isArray(data) ? data.find(emp => emp.id === employeeId) : null;
         setEmployee(emp);
         setEditableEmployee(emp);
       })
@@ -60,33 +60,40 @@ const Mitarbeiterprofil = () => {
 
   return (
     <div className="p-4 flex flex-col w-full h-full justify-start items-center z-20 ">
-      <div className="flex flex-col rounded-2xl p-6 w-full h-full overflow-y-auto  shadow-lg">
-        <div className="flex flex-col  items-center w-full mb-8">
+      <div className="flex flex-col rounded-2xl p-6 w-full h-full overflow-y-auto shadow-lg">
+        <div className="flex flex-col items-center w-full mb-8">
           <div className="flex items-center justify-center space-x-6 h-[80%] bg-custom-green bg-opacity-20 px-6 py-6 rounded-xl shadow-md w-full ">
-            
             <div className="flex h-full w-full space-x-8 justify-center items-center">
               <img
-              src={Granny}
-              alt={employee.name}
-              className="border-4 border-custom-dark-gray border-opacity-40 w-24 h-24 rounded-full  bg-custom-green"
+                src={Granny}
+                alt={employee.name}
+                className="border-4 border-custom-dark-gray border-opacity-40 w-24 h-24 rounded-full bg-custom-green"
               />
               <h1 className="font-fjalla text-custom-dark-gray text-2xl py-1">{employee.name.toUpperCase()}</h1>
-              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>ALTER:</span> <br/> {new Date().getFullYear() - employee.birthYear} JAHRE</p>
-              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>GESCHLECHT:</span> <br/> {employee.gender || 'UNBEKANNT'}</p>
-              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>AUFENTHALTSORT:</span> <br/> {employee.location || 'UNBEKANNT'}</p>
-              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>ADRESSE:</span> <br/> {employee.address}</p>
-              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>POSITION:</span> <br/> {employee.position}</p>
-              
+              <p className="font-lato font-semibold text-sm leading-6">
+                <span className='text-md text-custom-dark-gray'>ALTER:</span> <br /> {new Date().getFullYear() - employee.birthYear} JAHRE
+              </p>
+              <p className="font-lato font-semibold text-sm leading-6">
+                <span className='text-md text-custom-dark-gray'>GESCHLECHT:</span> <br /> {employee.gender || 'UNBEKANNT'}
+              </p>
+              <p className="font-lato font-semibold text-sm leading-6">
+                <span className='text-md text-custom-dark-gray'>AUFENTHALTSORT:</span> <br /> {employee.location || 'UNBEKANNT'}
+              </p>
+              <p className="font-lato font-semibold text-sm leading-6">
+                <span className='text-md text-custom-dark-gray'>ADRESSE:</span> <br /> {employee.address}
+              </p>
+              <p className="font-lato font-semibold text-sm leading-6">
+                <span className='text-md text-custom-dark-gray'>POSITION:</span> <br /> {employee.position}
+              </p>
             </div>
             <button
-                onClick={() => setIsEditing(true)}
-                className="mt-4 font-lato font-semibold text-sm py-1 bg-custom-dark-gray bg-opacity-25 hover:bg-opacity-100 transition-all duration-300 text-white rounded-xl px-4"
-              >
-                Bearbeiten
+              onClick={() => setIsEditing(true)}
+              className="mt-4 font-lato font-semibold text-sm py-1 bg-custom-dark-gray bg-opacity-25 hover:bg-opacity-100 transition-all duration-300 text-white rounded-xl px-4"
+            >
+              Bearbeiten
             </button>
           </div>
         </div>
-        
         <div className="flex justify-center items-center space-x-4 mb-8">
           <button
             className={`min-w-36 text-sm border z-20 bg-opacity-50 hover:bg-opacity-85 hover:text-white hover:bg-custom-dark-gray transition-all duration-300 font-Beba tracking-wider py-2 px-4 rounded-full ${activeTab === 'Persönliches' ? 'text-custom-dark-green drop-shadow-xl shadow-lg bg-custom-dark-gray' : 'bg-custom-light-gray border border-black border-opacity-15 bg-opacity-20 text-black'}`}
@@ -107,7 +114,6 @@ const Mitarbeiterprofil = () => {
             Kontakt
           </button>
         </div>
-        
         {isEditing ? (
           <div className="bg-custom-green bg-opacity-20 flex flex-col p-6 rounded-xl shadow-md w-full mb-8">
             <input
@@ -168,7 +174,6 @@ const Mitarbeiterprofil = () => {
             </div>
           </div>
         ) : null}
-        
         <div className="w-full">
           {renderTabContent()}
         </div>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { FaHandHoldingMedical, FaBars, FaBarsStaggered } from "react-icons/fa6";
+import { FaHandHoldingMedical, FaBars, FaBarsStaggered, FaPerson } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { CiHome, CiSearch, CiUser } from "react-icons/ci";
-import { MdExplore } from "react-icons/md";
+
 import { FaRegMessage } from "react-icons/fa6";
-import { FaArrowLeft } from "react-icons/fa"; // Import back arrow icon
+
+import { IoSettingsOutline } from "react-icons/io5";
+
 
 const Navbar = () => {
   const location = useLocation();
@@ -19,9 +21,9 @@ const Navbar = () => {
   const menuItems = [
     { to: "/dashboard", icon: <CiHome className='w-6 h-6' />, name: "Home" },
     { to: "/patientenliste", icon: <CiSearch className='w-6 h-6' />, name: "Search" },
-    { to: "/explore", icon: <MdExplore className='w-6 h-6' />, name: "Explore" },
+    { to: "/Mitarbeiterliste", icon: <FaPerson className='w-6 h-6' />, name: "Explore" },
     { to: "/message", icon: <FaRegMessage className='w-4 h-4' />, name: "Message" },
-    { to: "/back", icon: <FaArrowLeft className='w-6 h-6' />, name: "Back" }, // Changed icon and name
+    { to: "/Einstellungen", icon: <IoSettingsOutline className='w-6 h-6' />, name: "Back" }, // Changed icon and name
   ];
 
   const handleBackButtonClick = () => {
