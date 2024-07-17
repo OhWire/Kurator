@@ -10,7 +10,7 @@ import {
   makeSelectStep4Data,
   makeSelectStep5Data,
   makeSelectStep6Data
-} from '../../../../..backend/selectors'; // Passen Sie den Pfad entsprechend an
+} from './selectors'; // Passen Sie den Pfad entsprechend an
 
 const initialValues = {
   evaluation: [
