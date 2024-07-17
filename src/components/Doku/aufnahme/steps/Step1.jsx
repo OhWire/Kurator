@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
-import { saveStep1Data } from '../state/actions';
 import { useDispatch } from 'react-redux';
+import { saveStep1Data } from '../state/actions';
 
 const initialValues = {
   vorname: '',
