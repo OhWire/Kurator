@@ -11,8 +11,12 @@ import MedicationPlan from './_MedInfo/Medikationsplan';
 
 const PatientenProfil = () => {
   const { state } = useLocation();
-  const { patient } = state;
+  const { patient } = state || {};
   const [activeTab, setActiveTab] = useState('Dokumentation');
+
+  if (!patient) {
+    return <div>Patientendaten nicht verfügbar</div>;
+  }
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -50,12 +54,20 @@ const PatientenProfil = () => {
             </div>
             <div className='flex space-x-4 justify-around items-center w-full'>
               <div className="flex">
-                <h1 className="font-fjalla text-custom-dark-gray text-2xl py-1">{patient.name.toUpperCase()}</h1>
+                <h1 className="font-fjalla text-custom-dark-gray text-2xl py-1">
+                  {patient.name ? patient.name.toUpperCase() : 'NAME NICHT VERFÜGBAR'}
+                </h1>
               </div>
               <div className="flex flex-col">
-                <p className='font-lato font-semibold text-xs py-1'>ALTER: {new Date().getFullYear() - patient.birthYear} JAHRE</p>
-                <p className='font-lato font-semibold text-xs py-1'>GESCHLECHT: {patient.gender || 'UNBEKANNT'}</p>
-                <p className='font-lato font-semibold text-xs py-1'>AUFENTHALTSORT: {patient.location || 'UNBEKANNT'}</p>
+                <p className='font-lato font-semibold text-xs py-1'>
+                  ALTER: {patient.birthYear ? new Date().getFullYear() - patient.birthYear : 'UNBEKANNT'} JAHRE
+                </p>
+                <p className='font-lato font-semibold text-xs py-1'>
+                  GESCHLECHT: {patient.gender || 'UNBEKANNT'}
+                </p>
+                <p className='font-lato font-semibold text-xs py-1'>
+                  AUFENTHALTSORT: {patient.location || 'UNBEKANNT'}
+                </p>
               </div>
             </div>
           </div>

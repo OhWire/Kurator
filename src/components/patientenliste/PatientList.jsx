@@ -7,7 +7,7 @@ const PatientList = () => {
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/patients')  // Ändern Sie die URL entsprechend Ihrer Serverkonfiguration
+    fetch('http://54.93.216.59:3001/patients')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

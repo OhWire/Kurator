@@ -23,8 +23,9 @@ const PatientItem = ({ patient }) => {
           <div className='flex mx-2 items-center'>
             <div className="flex flex-col items-center mx-4 px-2 rounded-xl bg-opacity-40 h-10">
               <p className="font-lato text-sm p-0 px-2 text-black">ID: {patient.id}</p>
+              <p className="font-lato text-sm p-0 px-2 text-black">Name: {patient.vorname} {patient.nachname}</p>
               <p className="font-lato text-sm p-0 px-2 text-black">Raum: {patient.zimmernummer}</p>
-              <p className="font-lato text-sm p-0 px-2 text-black">geb. {patient.geburtsdatum}</p>
+              <p className="font-lato text-sm p-0 px-2 text-black">geb. {new Date(patient.geburtsdatum).toLocaleDateString()}</p>
             </div>
           </div>
         </div>
