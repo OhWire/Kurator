@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Formik, Form, Field, FieldArray } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { saveStep4Data } from '../state/actions';
 
 const initialValues = {
-  categories: [
-    { name: 'Körperliche Ressourcen', rating: '', details: '' },
-    { name: 'Kognitive Ressourcen', rating: '', details: '' },
-    { name: 'Emotionale Ressourcn', rating: '', details: '' },
-    { name: 'Sozial Ressourcen', rating: '', details: '' },
-  ]
+  resources: '',
+  supportNetwork: '',
+  copingStrategies: '',
+  previousTherapies: '',
 };
 
 const Step4 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [focusedRow, setFocusedRow] = useState(null);
 
   return (
     <Formik
@@ -27,63 +24,59 @@ const Step4 = () => {
         navigate('/step5');
       }}
     >
-      {({ values }) => (
+      {() => (
         <Form className="flex flex-col w-full h-full z-20">
           <div className="flex h-[15%] justify-between items-center">
             <div className="flex p-10 py-16">
               <h2 className="text-4xl font-fjalla p-6">
-                Pflegeplanung<span className="text-xl">Ressourcen und Fähigkeiten</span>
+                Ressourcen und Unterstützungsnetzwerk<span className="text-xl"></span>
               </h2>
             </div>
           </div>
           <div className="flex justify-center items-center h-[70%] w-full">
             <div className="flex w-[95%] h-full bg-custom-light-gray bg-opacity-25 rounded-xl p-4 overflow-y-scroll custom-scrollbar">
-              <FieldArray name="categories">
-                {({ form }) => (
-                  <div className="flex flex-col w-full space-y-4">
-                    <div className="grid grid-cols-3 gap-2 items-center">
-                      <div className="text-xl text-center font-fjalla">Kategorie</div>
-                      <div className="text-xl text-center font-fjalla">Bewertung</div>
-                      <div className="text-xl text-center font-fjalla">Details</div>
-                    </div>
-                    {form.values.categories.map((_, index) => (
-                      <div key={index} className={`grid grid-cols-3 gap-2 items-center ${focusedRow === index ? 'h-24' : 'h-16'}`}>
-                        <Field
-                          name={`categories[${index}].name`}
-                          placeholder="Kategorie"
-                          className="drop-shadow-md font-lato text-md text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35"
-                          disabled
-                        />
-                        <div className="flex items-center space-x-1">
-                          {[...Array(10).keys()].map(i => (
-                            <label key={i + 1} className="flex items-center space-x-1">
-                              <Field
-                                type="radio"
-                                name={`categories[${index}].rating`}
-                                value={`${i + 1}`}
-                                className="hidden"
-                              />
-                              <span className={`block w-4 h-4 border-2 border-custom-dark-gray rounded-full cursor-pointer ${values.categories[index].rating === `${i + 1}` ? 'bg-custom-green' : ''}`} />
-                            </label>
-                          ))}
-                          <div className="flex justify-center items-center h-12 w-12">
-                            {values.categories[index].rating && (
-                              <span className="text-sm font-bold ml-6">{values.categories[index].rating}</span>
-                            )}
-                          </div>
-                        </div>
-                        <Field
-                          name={`categories[${index}].details`}
-                          placeholder="Geben Sie Details ein"
-                          className="flex justify-center items-center drop-shadow-md pt-4 h-16 font-lato text-md text-left rounded-xl bg-custom-light-gray bg-opacity-35 px-6 w-full"
-                          component="textarea"
-                          rows="4"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </FieldArray>
+              <div className="flex flex-col w-full space-y-4">
+                <div className="flex flex-col space-y-2">
+                  <h3 className="text-2xl font-thin">Ressourcen</h3>
+                  <Field
+                    name="resources"
+                    placeholder="Beschreiben Sie die Ressourcen"
+                    className="font-lato text-md text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35 drop-shadow-xl w-full"
+                    component="textarea"
+                    rows="4"
+                  />
+                </div>
+                <div className="flex flex-col space-y-2">
+                  <h3 className="text-2xl font-thin">Unterstützungsnetzwerk</h3>
+                  <Field
+                    name="supportNetwork"
+                    placeholder="Beschreiben Sie das Unterstützungsnetzwerk"
+                    className="font-lato text-md text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35 drop-shadow-xl w-full"
+                    component="textarea"
+                    rows="4"
+                  />
+                </div>
+                <div className="flex flex-col space-y-2">
+                  <h3 className="text-2xl font-thin">Bewältigungsstrategien</h3>
+                  <Field
+                    name="copingStrategies"
+                    placeholder="Beschreiben Sie die Bewältigungsstrategien"
+                    className="font-lato text-md text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35 drop-shadow-xl w-full"
+                    component="textarea"
+                    rows="4"
+                  />
+                </div>
+                <div className="flex flex-col space-y-2">
+                  <h3 className="text-2xl font-thin">Bisherige Therapien</h3>
+                  <Field
+                    name="previousTherapies"
+                    placeholder="Beschreiben Sie die bisherigen Therapien"
+                    className="font-lato text-md text-center p-4 mx-4 rounded-xl bg-custom-light-gray bg-opacity-35 drop-shadow-xl w-full"
+                    component="textarea"
+                    rows="4"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div className="flex justify-between mt-4 px-10">

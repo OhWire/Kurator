@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
-import { useDispatch } from 'react-redux';
 import { saveStep2Data } from '../state/actions';
+import { useDispatch } from 'react-redux';
 
 const initialValues = {
   diagnoses: '',

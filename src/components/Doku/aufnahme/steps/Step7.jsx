@@ -18,12 +18,12 @@ const frequencyOptions = ['Täglich', 'Wöchentlich', 'Monatlich', 'Vierteljähr
 const Step7 = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-  const step1Data = useSelector((state) => state.step1Data);
-  const step2Data = useSelector((state) => state.step2Data);
-  const step3Data = useSelector((state) => state.step3Data);
-  const step4Data = useSelector((state) => state.step4Data);
-  const step5Data = useSelector((state) => state.step5Data);
-  const step6Data = useSelector((state) => state.step6Data);
+  const step1Data = useSelector((state) => state.step1.data);
+  const step2Data = useSelector((state) => state.step2.data);
+  const step3Data = useSelector((state) => state.step3.data);
+  const step4Data = useSelector((state) => state.step4.data);
+  const step5Data = useSelector((state) => state.step5.data);
+  const step6Data = useSelector((state) => state.step6.data);
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
@@ -40,7 +40,7 @@ const Step7 = () => {
       patientId: step1Data.patientId, // Assuming patientId is part of step1Data or another step's data
     };
 
-    axios.post('http://54.93.216.59:3001/step7', completeData)
+    axios.post('http://18.199.87.252:3001/step7', completeData)
       .then(response => {
         setShowPopup(true);
       })
