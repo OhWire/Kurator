@@ -6,9 +6,19 @@ const MedizinischeInfo = ({ patientId }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Beispiel-API-Endpunkt, ändere diesen auf deine tatsächliche API-URL
+    if (!patientId) {
+      setError(new Error('Patient ID is not defined'));
+      setLoading(false);
+      return;
+    }
+
     fetch(`http://18.196.77.116:3001/patient/${patientId}`)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => {
         console.log('Fetched patient data:', data); // Debugging-Ausgabe
         setPatient(data);
