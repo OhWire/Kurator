@@ -5,18 +5,35 @@ import { Link } from 'react-router-dom';
 
 const PatientList = () => {
   const [patients, setPatients] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://54.93.216.59:3001/patients')
+    fetch('http://18.184.167.92:3001/patients')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
-      .then(data => setPatients(data))
-      .catch(error => console.error('Error fetching patient data:', error));
+      .then(data => {
+        setPatients(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching patient data:', error);
+        setError(error);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error fetching patient data: {error.message}</div>;
+  }
 
   return (
     <div className="z-20 p-6 pb-20 h-screen flex flex-col rounded-xl overflow-y-auto custom-scrollbar-container custom-scrollbar bg-opacity-80" 
