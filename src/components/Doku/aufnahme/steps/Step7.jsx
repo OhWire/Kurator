@@ -3,6 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import {
+  makeSelectStep1Data,
+  makeSelectStep2Data,
+  makeSelectStep3Data,
+  makeSelectStep4Data,
+  makeSelectStep5Data,
+  makeSelectStep6Data
+} from './selectors'; // Passen Sie den Pfad entsprechend an
 
 const initialValues = {
   evaluation: [
@@ -18,12 +26,15 @@ const frequencyOptions = ['Täglich', 'Wöchentlich', 'Monatlich', 'Vierteljähr
 const Step7 = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-  const step1Data = useSelector((state) => state.step1Data);
-  const step2Data = useSelector((state) => state.step2Data);
-  const step3Data = useSelector((state) => state.step3Data);
-  const step4Data = useSelector((state) => state.step4Data);
-  const step5Data = useSelector((state) => state.step5Data);
-  const step6Data = useSelector((state) => state.step6Data);
+
+  // Verwenden Sie die memoisierten Selektoren
+  const step1Data = useSelector(makeSelectStep1Data);
+  const step2Data = useSelector(makeSelectStep2Data);
+  const step3Data = useSelector(makeSelectStep3Data);
+  const step4Data = useSelector(makeSelectStep4Data);
+  const step5Data = useSelector(makeSelectStep5Data);
+  const step6Data = useSelector(makeSelectStep6Data);
+
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
@@ -37,10 +48,10 @@ const Step7 = () => {
       evaluation: values.evaluation,
       nurse: values.nurse,
       management: values.management,
-      patientId: step1Data.patientId, // Assuming patientId is part of step1Data or another step's data
+      patientId: step1Data.patientId, // Annahme: patientId ist Teil von step1Data oder anderen Schritt-Daten
     };
 
-    axios.post('http://54.93.216.59:3001/step7', completeData)
+    axios.post('http://18.192.63.203:3001/step7', completeData)
       .then(response => {
         setShowPopup(true);
       })
