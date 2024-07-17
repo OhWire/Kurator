@@ -7,6 +7,7 @@
       "birthYear": 1934,
       "notes": "Max has a tendency to forget taking his medication. Ensure he takes his pills on time.",
       "tasksCompleted": 7,
+      "biography": "Max Mustermann wurde 1934 in Example City geboren. Er arbeitete sein ganzes Leben lang als Ingenieur und entwickelte zahlreiche innovative Maschinen. Max liebt es, Schach zu spielen und Spaziergänge in der Natur zu machen. Er ist ein Familienmensch und verbringt gerne Zeit mit seinen Enkeln. Trotz seiner leichten Demenz bleibt Max geistig aktiv und interessiert sich für Technik und Wissenschaft.",
       "profile": {
         "vorname": "Max",
         "nachname": "Mustermann",
@@ -64,7 +65,7 @@
       "id": 2,
       "name": "Anna Müller",
       "room": "028",
-      "biography": "Das hier ist eine Testbio",
+      "biography": "Anna Müller wurde 1935 in Diessen geboren und verbrachte dort ihre Kindheit. Sie war eine leidenschaftliche Lehrerin und unterrichtete über 40 Jahre lang an der örtlichen Grundschule. Anna ist eine talentierte Malerin und liebt es, Zeit in ihrem Garten zu verbringen. Sie ist verwitwet und hat zwei Kinder und vier Enkelkinder. Anna ist bekannt für ihre Herzlichkeit und ihren Humor, trotz ihrer Schwerhörigkeit bleibt sie kommunikativ und interessiert an den Geschichten anderer Menschen.",
       "birthYear": 1935,
       "notes": "Anna Müller ist auffällig reich, sie hat jedoch vergessen, dass sie Enkel hat, vielleicht sollte ich sie daran erinnern",
       "tasksCompleted": 3,

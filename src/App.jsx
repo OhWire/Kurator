@@ -5,8 +5,19 @@ import Navbar from './components/Navbar/Navbar';
 import WaveBackground from "./components/background/wavebackground"
 import { Provider } from 'react-redux';
 import store from './components/Doku/aufnahme/state/store';
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 function App() {
+  React.useEffect(() => {
+    AOS.init({
+      offset: 100,
+      duration: 500,
+      easing: "ease-in-sine",
+      delay: 100,
+    });
+    AOS.refresh();
+  }, []);
   return (
    <Provider store={store}>
     <Router>

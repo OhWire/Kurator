@@ -7,25 +7,24 @@ const PatientList = () => {
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
-    fetch('http://18.192.63.203:3001/patients')
+    fetch('http://54.93.216.59:3001/patients')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
-      .then(data => {
-        if (data && Array.isArray(data.patients)) {
-          setPatients(data.patients);
-        } else {
-          throw new Error('Data format is incorrect');
-        }
-      })
+      .then(data => setPatients(data))
       .catch(error => console.error('Error fetching patient data:', error));
   }, []);
 
   return (
-    <div className="z-20 p-6 pb-20 h-screen flex flex-col rounded-xl overflow-y-auto custom-scrollbar-container custom-scrollbar bg-opacity-80">
+    <div className="z-20 p-6 pb-20 h-screen flex flex-col rounded-xl overflow-y-auto custom-scrollbar-container custom-scrollbar bg-opacity-80" 
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-out"
+      data-aos-duration="1000"
+      data-aos-once="true" 
+    >
       <div className="flex w-full h-32 justify-between items-center">
         <h1 className="text-6xl tracking-wide mb-4 font-fjalla">Patientenliste</h1>
         <div className="flex w-full justify-end p-4">

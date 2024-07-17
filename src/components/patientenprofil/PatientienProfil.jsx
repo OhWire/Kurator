@@ -66,10 +66,17 @@ const PatientenProfil = () => {
     }`;
 
   return (
-    <div className="p-4 flex flex-col w-full h-full justify-start items-start z-20 overflow-y-auto">
-      <div className="flex flex-col rounded-2xl p-4 w-full h-[35%] ">
+    <div className="p-4 flex flex-col w-full h-full justify-start items-start z-20 overflow-y-auto duration-200 transition-all"
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-out"
+      data-aos-duration="1000"
+      data-aos-once="true" 
+       >
+      <div className="flex flex-col rounded-2xl p-4 w-full h-[35%]  "
+      
+      >
         <div className="flex justify-between items-center w-full mb-12">
-          <div className="flex justify-around items-center bg-custom-green bg-opacity-20 px-6 py-6 rounded-xl shadow-lg w-[35%]">
+          <div className="flex justify-around items-center bg-custom-green bg-opacity-20 px-6 py-6 rounded-xl shadow-lg w-[35%]" >
             <div className="flex items-center justify-center">
               <img
                 src={Granny}
@@ -187,7 +194,12 @@ const PatientenProfil = () => {
         </div>
       </div>
 
-      <div className="flex-grow w-full h-[180%] overflow-y-auto">
+      <div className="flex-grow w-full h-[180%] overflow-y-auto " 
+      
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-out"
+      data-aos-duration="1000"
+      data-aos-once="true" >
         {renderTabContent()}
       </div>
     </div>

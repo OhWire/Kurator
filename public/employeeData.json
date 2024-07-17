@@ -1,49 +1,186 @@
 {
-  "employees": [
+  "patients": [
     {
-      "employeeId": 1,
+      "id": 1,
       "name": "Max Mustermann",
-      "birthYear": 1985,
-      "gender": "Männlich",
-      "location": "Berlin",
-      "address": "Musterstraße 1, 12345 Berlin",
-      "position": "IT-Projektmanager",
-      "qualifications": "Master in Informatik, Zertifizierung als Scrum Master",
-      "skills": "Projektmanagement, Agile Methoden, Teamführung, Java-Entwicklung",
-      "experience": "5 Jahre Erfahrung in der Softwareentwicklung, 2 Jahre als Teamleiter",
-      "interests": "Künstliche Intelligenz, Mountainbiking",
-      "careerGoals": "Weiterentwicklung zum Senior Projektmanager, Spezialisierung in KI-Projekten",
-      "contact": "max.mustermann@example.com"
+      "room": "030",
+      "birthYear": 1934,
+      "notes": "Max has a tendency to forget taking his medication. Ensure he takes his pills on time.",
+      "tasksCompleted": 7,
+      "biography": "Max Mustermann wurde 1934 in Example City geboren. Er arbeitete sein ganzes Leben lang als Ingenieur und entwickelte zahlreiche innovative Maschinen. Max liebt es, Schach zu spielen und Spaziergänge in der Natur zu machen. Er ist ein Familienmensch und verbringt gerne Zeit mit seinen Enkeln. Trotz seiner leichten Demenz bleibt Max geistig aktiv und interessiert sich für Technik und Wissenschaft.",
+      "profile": {
+        "vorname": "Max",
+        "nachname": "Mustermann",
+        "geburtsdatum": "1934-01-01",
+        "geschlecht": "männlich",
+        "adresse": "Example Street 1",
+        "plz": "12345",
+        "stadt": "Example City",
+        "email": "max.mustermann@example.com",
+        "telefon": "0123456789",
+        "notfallkontakt": "Hans Mustermann",
+        "notfalltelefon": "0123456789",
+        "versicherungsnummer": "123456789",
+        "zimmernummer": "030",
+        "nationalitaet": "Deutsch",
+        "allergies": [],
+        "categories": [
+          {
+            "name": "Schmerzmanagement",
+            "intensity": "Mittel",
+            "details": "Leichte Arthritis"
+          }
+        ],
+        "diagnoses": "Leichte Demenz",
+        "evaluation": [
+          {
+            "name": "Blutdrucküberwachung",
+            "frequency": "Täglich",
+            "responsible": "Pflegekraft",
+            "notes": "Normalerweise stabil"
+          }
+        ],
+        "goalsAndMeasures": [
+          {
+            "name": "Blutzuckerkontrolle",
+            "goal": "Stabile Werte",
+            "measures": "Regelmäßige Tests",
+            "responsibilities": "Pflegekraft",
+            "status": "Laufend"
+          }
+        ],
+        "importantInfo": "Trägt Hörgerät, Brille",
+        "medications": [
+          {
+            "name": "Aspirin",
+            "dose": "100mg",
+            "duration": "Dauerhaft",
+            "frequency": "Einmal täglich"
+          }
+        ],
+        "therapies": "Physiotherapie zweimal pro Woche"
+      }
     },
     {
-      "employeeId": 2,
-      "name": "Julia Müller",
-      "birthYear": 1990,
-      "gender": "Weiblich",
-      "location": "München",
-      "address": "Beispielstraße 2, 54321 München",
-      "position": "Marketing Specialist",
-      "qualifications": "Bachelor in Marketing, Google Analytics-Zertifikat",
-      "skills": "Digitales Marketing, SEO, Content-Erstellung, Social Media Management",
-      "experience": "3 Jahre Erfahrung in einer Werbeagentur, erfolgreiches Management mehrerer Social Media Kampagnen",
-      "interests": "Grafikdesign, Reisen",
-      "careerGoals": "Entwicklung zur Marketing-Managerin, Vertiefung der Kenntnisse in digitalen Werbestrategien",
-      "contact": "julia.mueller@example.com"
-    },
-    {
-      "employeeId": 3,
-      "name": "Hans Schmidt",
-      "birthYear": 1975,
-      "gender": "Männlich",
-      "location": "Hamburg",
-      "address": "Hamburger Straße 3, 98765 Hamburg",
-      "position": "HR-Manager",
-      "qualifications": "Diplom in Betriebswirtschaft, Zertifizierung in Personalmanagement",
-      "skills": "Personalmanagement, Konfliktlösung, Organisationsentwicklung",
-      "experience": "10 Jahre Erfahrung im HR-Bereich, 5 Jahre als HR-Manager",
-      "interests": "Lesen, Wandern",
-      "careerGoals": "Weiterbildung im Bereich Arbeitsrecht, Entwicklung zum Senior HR-Manager",
-      "contact": "hans.schmidt@example.com"
+      "id": 2,
+      "name": "Anna Müller",
+      "room": "028",
+      "biography": "Anna Müller wurde 1935 in Diessen geboren und verbrachte dort ihre Kindheit. Sie war eine leidenschaftliche Lehrerin und unterrichtete über 40 Jahre lang an der örtlichen Grundschule. Anna ist eine talentierte Malerin und liebt es, Zeit in ihrem Garten zu verbringen. Sie ist verwitwet und hat zwei Kinder und vier Enkelkinder. Anna ist bekannt für ihre Herzlichkeit und ihren Humor, trotz ihrer Schwerhörigkeit bleibt sie kommunikativ und interessiert an den Geschichten anderer Menschen.",
+      "birthYear": 1935,
+      "notes": "Anna Müller ist auffällig reich, sie hat jedoch vergessen, dass sie Enkel hat, vielleicht sollte ich sie daran erinnern",
+      "tasksCompleted": 3,
+      "profile": {
+        "vorname": "Anna",
+        "nachname": "Müller",
+        "geburtsdatum": "1935-01-01",
+        "geschlecht": "weiblich",
+        "adresse": "Seerichterstraße 9",
+        "plz": "86911",
+        "stadt": "Diessen",
+        "email": "Scholljohannes1@gmail.com",
+        "telefon": "012341515",
+        "notfallkontakt": "185817237172839",
+        "notfalltelefon": "1245815z7981",
+        "versicherungsnummer": "1248175619",
+        "zimmernummer": "22",
+        "nationalitaet": "Deutsch",
+        "allergies": [
+          {
+            "type": "Nesselsucht",
+            "details": "Reaktion auf bestimmte Medikamente",
+            "intensity": "Mittel",
+            "treatment": "Antihistaminika"
+          },
+          {
+            "type": "Pollenallergie",
+            "details": "Juckende Augen und Nase",
+            "intensity": "Gering",
+            "treatment": "Nasenspray, Augentropfen"
+          }
+        ],
+        "categories": [
+          {
+            "name": "Dekubitus Risiko",
+            "intensity": "Hoch",
+            "details": "Regelmäßige Umlagerung erforderlich"
+          },
+          {
+            "name": "Sturzrisiko",
+            "intensity": "Sehr gering",
+            "details": "Selbstständig mobil"
+          },
+          {
+            "name": "Mangelernährung",
+            "intensity": "Gering",
+            "details": "Appetit variiert"
+          },
+          {
+            "name": "Dehydrationsrisiko",
+            "intensity": "Gering",
+            "details": "Erinnerung ans Trinken erforderlich"
+          },
+          {
+            "name": "Schmerzmanagement",
+            "intensity": "Gering",
+            "details": "Leichte Gelenkschmerzen"
+          }
+        ],
+        "diagnoses": "Leichte Osteoporose",
+        "evaluation": [
+          {
+            "name": "Regelmäßige Überprüfung der Pflegeplanung",
+            "frequency": "Monatlich",
+            "responsible": "Pflegekraft",
+            "notes": "Anpassungen nach Bedarf"
+          },
+          {
+            "name": "Anpassungen basierend auf aktuellen Bedürfnissen und Veränderungen",
+            "frequency": "Täglich",
+            "responsible": "Pflegekraft",
+            "notes": "Engmaschige Kontrolle"
+          }
+        ],
+        "goalsAndMeasures": [
+          {
+            "name": "Kurzfristige Ziele",
+            "goal": "Mobilität erhalten",
+            "measures": "Tägliche Übungen",
+            "responsibilities": "Angehörige",
+            "status": "Abgeschlossen"
+          },
+          {
+            "name": "Langfristige Ziele",
+            "goal": "Schmerzfreiheit",
+            "measures": "Physiotherapie",
+            "responsibilities": "Arzt",
+            "status": "In Bearbeitung"
+          },
+          {
+            "name": "Konkrete Maßnahmen zur Zielerreichung",
+            "goal": "Verbesserte Ernährung",
+            "measures": "Ernährungsplan",
+            "responsibilities": "Arzt",
+            "status": "Ausstehend"
+          },
+          {
+            "name": "Verantwortlichkeiten und Zuständigkeiten",
+            "goal": "Regelmäßige Medikamenteneinnahme",
+            "measures": "Erinnerung durch Pflegekraft",
+            "responsibilities": "Pflegekraft",
+            "status": "In Bearbeitung"
+          }
+        ],
+        "importantInfo": "Anna ist schwerhörig und trägt ein Hörgerät.",
+        "medications": [
+          {
+            "name": "Medikament B",
+            "dose": "5mg",
+            "duration": "3 Monate",
+            "frequency": "2x täglich"
+          }
+        ],
+        "therapies": "Keine laufenden Therapien"
+      }
     }
   ]
 }

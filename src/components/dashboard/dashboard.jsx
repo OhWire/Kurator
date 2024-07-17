@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
-    <div className="flex flex-col w-full h-full px-6 py-12 justify-center items-center  rounded-xl z-20">
+    <div className="flex flex-col w-full h-full px-6 py-12 justify-center items-center  rounded-xl z-20"
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-out"
+      data-aos-duration="1000"
+      data-aos-once="true" >
       <div className="flex w-full h-full px-8 my-6 justify-start">
         <Link to="/Mitarbeiterprofil/1"  >
           <h1 className='text-5xl font-fjalla tracking-wide hover:cursor-pointer hover:text-custom-dark-gray z-20'>
