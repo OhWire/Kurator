@@ -1,28 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PatientItem from './PatientItem';
 import { CiFilter, CiCirclePlus } from "react-icons/ci";
 import { Link } from 'react-router-dom';
+import { fetchPatients } from './actions'; // Beispiel Aktion zum Abrufen von Patienten
 
 const PatientList = () => {
-  const [patients, setPatients] = useState([]);
+  const dispatch = useDispatch();
+  const patients = useSelector(state => state.patients.data);
 
   useEffect(() => {
-    fetch('http://18.184.167.92:3001/patients')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data && Array.isArray(data.patients)) {
-          setPatients(data.patients);
-        } else {
-          throw new Error('Data format is incorrect');
-        }
-      })
-      .catch(error => console.error('Error fetching patient data:', error));
-  }, []);
+    dispatch(fetchPatients());
+  }, [dispatch]);
+
 
   return (
     <div className="z-20 p-6 pb-20 h-screen flex flex-col rounded-xl overflow-y-auto custom-scrollbar-container custom-scrollbar bg-opacity-80">
