@@ -1,6 +1,10 @@
 import React from 'react';
 
 const MedizinischeInfo = ({ patient }) => {
+  if (!patient || !patient.profile) {
+    return <div>Loading...</div>; // oder eine passende Ladeanzeige
+  }
+
   const column1 = [
     { title: 'Anamnese', content: patient.profile.anamnese || 'Keine Anamnese verfügbar' },
     { title: 'Aktuelle Probleme', content: patient.profile.aktuelleProbleme || 'Keine aktuellen Probleme verfügbar' },
