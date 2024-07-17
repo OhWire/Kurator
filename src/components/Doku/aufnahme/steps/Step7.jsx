@@ -51,7 +51,7 @@ const Step7 = () => {
       patientId: step1Data.patientId, // Annahme: patientId ist Teil von step1Data oder anderen Schritt-Daten
     };
 
-    axios.post('http://54.93.216.59:3001/step7', completeData)
+    axios.post('http://3.68.199.188:3001/step7', completeData)
       .then(response => {
         setShowPopup(true);
       })
