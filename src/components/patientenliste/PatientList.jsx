@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PatientItem from './PatientItem';
 import { CiFilter, CiCirclePlus } from "react-icons/ci";
 import { Link } from 'react-router-dom';
-import { fetchPatients } from './action'; // Beispiel Aktion zum Abrufen von Patienten
+import { fetchPatients } from './actions'; // Beispiel Aktion zum Abrufen von Patienten
 
 const PatientList = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,6 @@ const PatientList = () => {
   useEffect(() => {
     dispatch(fetchPatients());
   }, [dispatch]);
-
 
   return (
     <div className="z-20 p-6 pb-20 h-screen flex flex-col rounded-xl overflow-y-auto custom-scrollbar-container custom-scrollbar bg-opacity-80">
