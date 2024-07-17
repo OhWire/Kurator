@@ -95,7 +95,7 @@ const Dienstplan = () => {
   };
 
   return (
-    <div className="calendar-container z-20">
+    <div className="calendar-container h-full z-20">
       <div className="calendar-header">
         <div className="flex items-center mx-6 justify-around w-[40%]">
           <button onClick={() => handleDateChange('prev')} className="button-nav">
@@ -110,7 +110,7 @@ const Dienstplan = () => {
           </button>
         </div>
         <div className="person-select-container">
-          <label htmlFor="personSelect" className="person-select-label">Select Person:</label>
+          
           <select
             id="personSelect"
             value={selectedPerson}
@@ -153,7 +153,7 @@ const Dienstplan = () => {
           </div>
         </div>
       )}
-      <div className="flex justify-between p-4 ">
+      <div className="flex justify-between p-4">
         <button onClick={() => setShowEventAdder(!showEventAdder)} className="button-add-event">
           <FaPlus className="mr-2" />
           Add Event
@@ -187,8 +187,9 @@ const Dienstplan = () => {
           </div>
         </div>
       )}
-      <div className="calendar-grid">
+      <div className="calendar-grid  ">
         <Calendar
+          
           localizer={localizer}
           events={filteredEvents}
           startAccessor="start"
@@ -197,6 +198,7 @@ const Dienstplan = () => {
           eventPropGetter={(event) => ({
             style: {
               backgroundColor: event.color,
+              
             },
           })}
         />
