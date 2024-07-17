@@ -3,14 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import {
-  makeSelectStep1Data,
-  makeSelectStep2Data,
-  makeSelectStep3Data,
-  makeSelectStep4Data,
-  makeSelectStep5Data,
-  makeSelectStep6Data
-} from './selectors'; // Passen Sie den Pfad entsprechend an
+import { createSelector } from 'reselect';
 
 const initialValues = {
   evaluation: [
@@ -23,17 +16,46 @@ const initialValues = {
 
 const frequencyOptions = ['Täglich', 'Wöchentlich', 'Monatlich', 'Vierteljährlich', 'Halbjährlich', 'Jährlich'];
 
+const step1DataSelector = createSelector(
+  (state) => state.step1,
+  (step1) => step1?.data || {}
+);
+
+const step2DataSelector = createSelector(
+  (state) => state.step2,
+  (step2) => step2?.data || {}
+);
+
+const step3DataSelector = createSelector(
+  (state) => state.step3,
+  (step3) => step3?.data || {}
+);
+
+const step4DataSelector = createSelector(
+  (state) => state.step4,
+  (step4) => step4?.data || {}
+);
+
+const step5DataSelector = createSelector(
+  (state) => state.step5,
+  (step5) => step5?.data || {}
+);
+
+const step6DataSelector = createSelector(
+  (state) => state.step6,
+  (step6) => step6?.data || {}
+);
+
 const Step7 = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
 
-  // Verwenden Sie die memoisierten Selektoren
-  const step1Data = useSelector(makeSelectStep1Data);
-  const step2Data = useSelector(makeSelectStep2Data);
-  const step3Data = useSelector(makeSelectStep3Data);
-  const step4Data = useSelector(makeSelectStep4Data);
-  const step5Data = useSelector(makeSelectStep5Data);
-  const step6Data = useSelector(makeSelectStep6Data);
+  const step1Data = useSelector(step1DataSelector);
+  const step2Data = useSelector(step2DataSelector);
+  const step3Data = useSelector(step3DataSelector);
+  const step4Data = useSelector(step4DataSelector);
+  const step5Data = useSelector(step5DataSelector);
+  const step6Data = useSelector(step6DataSelector);
 
   const dispatch = useDispatch();
 
@@ -48,10 +70,10 @@ const Step7 = () => {
       evaluation: values.evaluation,
       nurse: values.nurse,
       management: values.management,
-      patientId: step1Data.patientId, // Annahme: patientId ist Teil von step1Data oder anderen Schritt-Daten
+      patientId: step1Data.patientId, // Assuming patientId is part of step1Data or another step's data
     };
 
-    axios.post('http://18.184.167.92:3001/step7', completeData)
+    axios.post('http://54.93.216.59:3001/step7', completeData)
       .then(response => {
         setShowPopup(true);
       })
