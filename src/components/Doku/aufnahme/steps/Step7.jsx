@@ -18,15 +18,15 @@ const frequencyOptions = ['Täglich', 'Wöchentlich', 'Monatlich', 'Vierteljähr
 const Step7 = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-  
-  // Default fallback to empty objects if any state is undefined
+
+  // Fallbacks auf leere Objekte, falls ein Zustand undefined ist
   const step1Data = useSelector((state) => state.step1?.data || {});
   const step2Data = useSelector((state) => state.step2?.data || {});
   const step3Data = useSelector((state) => state.step3?.data || {});
   const step4Data = useSelector((state) => state.step4?.data || {});
   const step5Data = useSelector((state) => state.step5?.data || {});
   const step6Data = useSelector((state) => state.step6?.data || {});
-  
+
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
@@ -40,7 +40,7 @@ const Step7 = () => {
       evaluation: values.evaluation,
       nurse: values.nurse,
       management: values.management,
-      patientId: step1Data.patientId, // Assuming patientId is part of step1Data or another step's data
+      patientId: step1Data.patientId, // Annahme: patientId ist Teil von step1Data oder anderen Schritt-Daten
     };
 
     axios.post('http://54.93.216.59:3001/step7', completeData)
