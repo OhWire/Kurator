@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
 import { saveStep6Data } from '../state/actions';
@@ -43,7 +43,6 @@ const statusOptions = ['In Bearbeitung', 'Abgeschlossen', 'Ausstehend'];
 const Step6 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [focusedRow, setFocusedRow] = useState(null);
 
   return (
     <Formik
@@ -54,7 +53,7 @@ const Step6 = () => {
         navigate('/step7');
       }}
     >
-      {({ values }) => (
+      {() => (
         <Form className="flex flex-col w-full h-full z-20">
           <div className="flex h-[15%] justify-between items-center">
             <div className="flex p-10 py-16">
@@ -66,7 +65,7 @@ const Step6 = () => {
           <div className="flex justify-center items-center h-[70%] w-full">
             <div className="flex w-[95%] h-full bg-custom-light-gray bg-opacity-25 rounded-xl p-4 overflow-y-scroll custom-scrollbar">
               <FieldArray name="goalsAndMeasures">
-                {({ form }) => (
+                {({ form, push, remove }) => (
                   <div className="flex flex-col w-full space-y-4">
                     <div className="grid grid-cols-5 gap-2 items-center">
                       <div className="text-xl text-center font-fjalla">Kategorie</div>
@@ -76,7 +75,7 @@ const Step6 = () => {
                       <div className="text-xl text-center font-fjalla">Status</div>
                     </div>
                     {form.values.goalsAndMeasures.map((_, index) => (
-                      <div key={index} className={`grid grid-cols-5 gap-2 items-center ${focusedRow === index ? 'h-24' : 'h-16'}`}>
+                      <div key={index} className="grid grid-cols-5 gap-2 items-center">
                         <Field
                           name={`goalsAndMeasures[${index}].name`}
                           placeholder="Kategorie"
@@ -109,6 +108,28 @@ const Step6 = () => {
                             <option key={i} value={option}>{option}</option>
                           ))}
                         </Field>
+                        {index !== form.values.goalsAndMeasures.length - 1 && (
+                          <button
+                            type="button"
+                            onClick={() => remove(index)}
+                            className=" flex justify-center items-center font-lato semibold text-white bg-opacity-75 text-xl w-16 h-4 rounded-full bg-red-600"
+                          >
+                            -
+                          </button>
+                        )}
+                        {index === form.values.goalsAndMeasures.length - 1 &&
+                          form.values.goalsAndMeasures[index].goal &&
+                          form.values.goalsAndMeasures[index].measures &&
+                          form.values.goalsAndMeasures[index].responsibilities &&
+                          form.values.goalsAndMeasures[index].status && (
+                            <button
+                              type="button"
+                              onClick={() => push({ name: '', goal: '', measures: '', responsibilities: '', status: '' })}
+                              className="font-lato semibold text-white bg-opacity-75 text-md w-24 h-10 rounded-xl bg-custom-dark-gray"
+                            >
+                              +
+                            </button>
+                          )}
                       </div>
                     ))}
                   </div>

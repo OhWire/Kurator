@@ -46,7 +46,7 @@ const Step2 = () => {
             <div className="flex w-[95%] h-full bg-custom-light-gray bg-opacity-25 rounded-xl p-4 overflow-y-scroll custom-scrollbar">
               <div className="flex flex-col w-full space-y-4">
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-2xl font-thin ">Aktuelle Diagnosen</h3>
+                  <h3 className="text-2xl font-thin">Aktuelle Diagnosen</h3>
                   <Field
                     name="diagnoses"
                     placeholder="Geben Sie Diagnosen ein"
@@ -56,7 +56,7 @@ const Step2 = () => {
                   />
                 </div>
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-2xl font-thin ">Medikamente</h3>
+                  <h3 className="text-2xl font-thin">Medikamente</h3>
                   <FieldArray name="medications">
                     {({ form, push, remove }) => (
                       <>
@@ -115,7 +115,7 @@ const Step2 = () => {
                   </FieldArray>
                 </div>
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-2xl font-thin ">Allergien und Unverträglichkeiten</h3>
+                  <h3 className="text-2xl font-thin">Allergien und Unverträglichkeiten</h3>
                   <FieldArray name="allergies">
                     {({ form, push, remove }) => (
                       <>
@@ -195,7 +195,7 @@ const Step2 = () => {
                   </FieldArray>
                 </div>
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-2xl font-thin ">Wichtige medizinische Informationen</h3>
+                  <h3 className="text-2xl font-thin">Wichtige medizinische Informationen</h3>
                   <Field
                     name="importantInfo"
                     placeholder="Geben Sie wichtige medizinische Informationen ein"
