@@ -1,8 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const MedizinischeInfo = ({ patient }) => {
+const MedizinischeInfo = ({ patientId }) => {
+  const [patient, setPatient] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Beispiel-API-Endpunkt, ändere diesen auf deine tatsächliche API-URL
+    fetch(`http://18.196.77.116:3001/patient/${patientId}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Fetched patient data:', data); // Debugging-Ausgabe
+        setPatient(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching patient data:', error);
+        setError(error);
+        setLoading(false);
+      });
+  }, [patientId]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading patient data: {error.message}</div>;
+  }
+
   if (!patient || !patient.profile) {
-    return <div>Loading...</div>; // oder eine passende Ladeanzeige
+    return <div>No patient data available</div>;
   }
 
   const column1 = [
