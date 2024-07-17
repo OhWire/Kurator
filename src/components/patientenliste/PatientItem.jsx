@@ -12,20 +12,20 @@ const PatientItem = ({ patient }) => {
 
   return (
     <div
-      className="p-4 bg-custom-light-gray bg-opacity-50 rounded-2xl shadow-sm flex flex-col items-center transition-transform duration-300"
+      className="px-4 mx-4 bg-custom-light-gray bg-opacity-50 rounded-2xl shadow-sm flex flex-col items-center transition-transform duration-300 hover:scale-105 hover:cursor-pointer"
       onClick={handleProfileClick}
     >
       <div className="flex flex-col sm:flex-row w-full items-center sm:justify-between">
-        <div className="flex w-[50%]">
-          <div className="flex mr-6 w-6 h-6 sm:w-12 sm:h-12 lg:w-16 lg:h-16 rounded-full justify-center items-center bg-custom-green">
-            <PiPersonSimpleTaiChi className='w-10 h-10 opacity-40 shadow-xl' />
+        <div className="flex w-full justify-center items-center">
+          <div className="flex w-6 h-6 m-2 sm:w-8 sm:h-8 lg:w-12 lg:h-12 rounded-full justify-center items-center bg-custom-green">
+            <PiPersonSimpleTaiChi className='w-6 h-6 opacity-40 shadow-xl' />
           </div>
-          <div className='flex mx-2 items-center'>
-            <div className="flex flex-col items-center mx-4 px-2 rounded-xl bg-opacity-40 h-10">
-              <p className="font-lato text-sm p-0 px-2 text-black">ID: {patient.id}</p>
-              <p className="font-lato text-sm p-0 px-2 text-black">Name: {patient.vorname} {patient.nachname}</p>
-              <p className="font-lato text-sm p-0 px-2 text-black">Raum: {patient.zimmernummer}</p>
-              <p className="font-lato text-sm p-0 px-2 text-black">geb. {new Date(patient.geburtsdatum).toLocaleDateString()}</p>
+          <div className='flex  items-center  w-full '>
+            <div className="flex  items-center justify-around    w-full   rounded-xl bg-opacity-40 h-10">
+              <p className="font-lato text-lg   text-black leading-6"><span className="text-xl font-lato mb-2 text-custom-dark-gray">Name:</span> <br/>  {patient.name}</p>
+              <p className="font-lato text-lg   text-black leading-6"><span className="text-xl font-lato mb-2 text-custom-dark-gray">Raum:</span> <br/>  {patient.room}</p>
+              <p className="font-lato text-lg   text-black leading-6"><span className="text-xl font-lato mb-2 text-custom-dark-gray">ID:</span>  <br/> {patient.id}</p>
+              <p className="font-lato text-lg   text-black leading-6"><span className="text-xl font-lato mb-2 text-custom-dark-gray">Geburtsjahr:</span> <br/>  {patient.birthYear}</p>
             </div>
           </div>
         </div>
