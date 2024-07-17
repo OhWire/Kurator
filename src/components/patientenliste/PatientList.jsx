@@ -9,7 +9,7 @@ const PatientList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://18.184.167.92:3001/patients')
+    fetch('http://18.196.77.116:3001/patients')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
