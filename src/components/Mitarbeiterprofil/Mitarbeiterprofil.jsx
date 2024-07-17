@@ -61,27 +61,29 @@ const Mitarbeiterprofil = () => {
   return (
     <div className="p-4 flex flex-col w-full h-full justify-start items-center z-20 ">
       <div className="flex flex-col rounded-2xl p-6 w-full h-full overflow-y-auto  shadow-lg">
-        <div className="flex flex-col items-center w-full mb-8">
-          <div className="flex items-center bg-custom-green bg-opacity-20 px-6 py-6 rounded-xl shadow-md w-full">
-            <img
+        <div className="flex flex-col  items-center w-full mb-8">
+          <div className="flex items-center justify-center space-x-6 h-[80%] bg-custom-green bg-opacity-20 px-6 py-6 rounded-xl shadow-md w-full ">
+            
+            <div className="flex h-full w-full space-x-8 justify-center items-center">
+              <img
               src={Granny}
               alt={employee.name}
-              className="border-4 border-custom-dark-gray border-opacity-40 w-24 h-24 rounded-full mr-4 bg-custom-green"
-            />
-            <div className="flex flex-col">
-              <h1 className="font-fjalla text-custom-dark-gray text-3xl py-1">{employee.name.toUpperCase()}</h1>
-              <p className="font-lato font-semibold text-sm py-1">ALTER: {new Date().getFullYear() - employee.birthYear} JAHRE</p>
-              <p className="font-lato font-semibold text-sm py-1">GESCHLECHT: {employee.gender || 'UNBEKANNT'}</p>
-              <p className="font-lato font-semibold text-sm py-1">AUFENTHALTSORT: {employee.location || 'UNBEKANNT'}</p>
-              <p className="font-lato font-semibold text-sm py-1">ADRESSE: {employee.address}</p>
-              <p className="font-lato font-semibold text-sm py-1">POSITION: {employee.position}</p>
-              <button
+              className="border-4 border-custom-dark-gray border-opacity-40 w-24 h-24 rounded-full  bg-custom-green"
+              />
+              <h1 className="font-fjalla text-custom-dark-gray text-2xl py-1">{employee.name.toUpperCase()}</h1>
+              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>ALTER:</span> <br/> {new Date().getFullYear() - employee.birthYear} JAHRE</p>
+              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>GESCHLECHT:</span> <br/> {employee.gender || 'UNBEKANNT'}</p>
+              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>AUFENTHALTSORT:</span> <br/> {employee.location || 'UNBEKANNT'}</p>
+              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>ADRESSE:</span> <br/> {employee.address}</p>
+              <p className="font-lato font-semibold text-sm  leading-6"><span className='text-md text-custom-dark-gray'>POSITION:</span> <br/> {employee.position}</p>
+              
+            </div>
+            <button
                 onClick={() => setIsEditing(true)}
                 className="mt-4 font-lato font-semibold text-sm py-1 bg-custom-dark-gray bg-opacity-25 hover:bg-opacity-100 transition-all duration-300 text-white rounded-xl px-4"
               >
                 Bearbeiten
-              </button>
-            </div>
+            </button>
           </div>
         </div>
         
