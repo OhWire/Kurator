@@ -10,7 +10,6 @@ import Step4 from '../components/Doku/aufnahme/steps/Step4';
 import Step5 from '../components/Doku/aufnahme/steps/Step5';
 import Step6 from '../components/Doku/aufnahme/steps/Step6';
 import Step7 from '../components/Doku/aufnahme/steps/Step7';
-import Dokumente from "../components/patientenprofil/Dokumente/Dokumente"
 import DokumentationPflegeplanungKommunikation from '../components/Doku/aufnahme/DokumentationPflegeplanungKommunikation';
 import DokumentationPflegeplanungMobilitaet from '../components/Doku/aufnahme/DokumentationPflegeplanungMobilitaet';
 import Register from '../components/Register/register';
@@ -41,7 +40,6 @@ const routes = [
     { path: "/register", element: <Register /> },
     { path: "/confirm", element: <ConfirmPage /> },
     { path: "/MitarbeiterProfil/:id", element: <Mitarbeiterprofil /> },
-    { path: "/Dokumente", element: <Dokumente /> }
 ];
 
 export default routes;

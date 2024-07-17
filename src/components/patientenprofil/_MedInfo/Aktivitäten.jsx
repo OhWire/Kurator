@@ -49,15 +49,15 @@ const AktivitätenProtokoll = () => {
 
   return (
     <div ref={activitiesRef} className="p-4 rounded-2xl bg-white bg-opacity-60 overflow-y-auto w-full h-full z-20 custom-scrollbar">
-      <div className="flex justify-end items-center mb-4">
+      <div className="flex justify-end items-center w-[95%] absolute">
         <button onClick={toggleFullscreen} className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-all duration-300">
           {isFullscreen ? <FiMinimize className="w-6 h-6" /> : <FiMaximize className="w-6 h-6" />}
         </button>
       </div>
-      <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-3 space-y-4">
-          <div>
-            <label className="block text-2xl pb-2 font-thin text-gray-700">Gehen</label>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="col-span-1 space-y-4">
+          <div className="border-2 border-gray-400 rounded-xl p-4 bg-white shadow-lg">
+            <label className="block text-2xl pb-2 font-Beba text-gray-700">Gehen</label>
             <textarea
               name="walking"
               value={activities.walking}
@@ -65,8 +65,8 @@ const AktivitätenProtokoll = () => {
               className="mt-1 block w-full h-32 p-2 border border-gray-300 rounded-md"
             ></textarea>
           </div>
-          <div>
-            <label className="block text-2xl pb-2 font-thin text-gray-700">Essen</label>
+          <div className="border-2 border-gray-400 rounded-xl p-4 bg-white shadow-lg">
+            <label className="block text-2xl pb-2 font-Beba text-gray-700">Essen</label>
             <textarea
               name="eating"
               value={activities.eating}
@@ -74,8 +74,8 @@ const AktivitätenProtokoll = () => {
               className="mt-1 block w-full h-32 p-2 border border-gray-300 rounded-md"
             ></textarea>
           </div>
-          <div>
-            <label className="block text-2xl pb-2 font-thin text-gray-700">Schlafen</label>
+          <div className="border-2 border-gray-400 rounded-xl p-4 bg-white shadow-lg">
+            <label className="block text-2xl pb-2 font-Beba text-gray-700">Schlafen</label>
             <textarea
               name="sleeping"
               value={activities.sleeping}
@@ -83,8 +83,10 @@ const AktivitätenProtokoll = () => {
               className="mt-1 block w-full h-32 p-2 border border-gray-300 rounded-md"
             ></textarea>
           </div>
-          <div>
-            <label className="block text-2xl pb-2 font-thin text-gray-700">Sport treiben</label>
+        </div>
+        <div className="col-span-1 space-y-4">
+          <div className="border-2 border-gray-400 rounded-xl p-4 bg-white shadow-lg">
+            <label className="block text-2xl pb-2 font-Beba text-gray-700">Sport treiben</label>
             <textarea
               name="exercising"
               value={activities.exercising}
@@ -92,8 +94,8 @@ const AktivitätenProtokoll = () => {
               className="mt-1 block w-full h-32 p-2 border border-gray-300 rounded-md"
             ></textarea>
           </div>
-          <div>
-            <label className="block text-2xl pb-2 font-thin text-gray-700">Sozialisation</label>
+          <div className="border-2 border-gray-400 rounded-xl p-4 bg-white shadow-lg">
+            <label className="block text-2xl pb-2 font-Beba text-gray-700">Sozialisation</label>
             <textarea
               name="socializing"
               value={activities.socializing}

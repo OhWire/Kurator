@@ -43,7 +43,7 @@ const Wunddoku = () => {
 
   return (
     <div ref={wunddokuRef} className="p-4 rounded-2xl bg-white bg-opacity-60 overflow-y-auto w-full h-full z-20 custom-scrollbar">
-      <div className="flex justify-end items-center mb-4">
+      <div className="flex justify-end items-center w-[95%] absolute  ">
         <button onClick={toggleFullscreen} className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-all duration-300">
           {isFullscreen ? <FiMinimize className="w-6 h-6" /> : <FiMaximize className="w-6 h-6" />}
         </button>

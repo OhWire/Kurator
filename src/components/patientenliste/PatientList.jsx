@@ -14,7 +14,13 @@ const PatientList = () => {
         }
         return response.json();
       })
-      .then(data => setPatients(data))
+      .then(data => {
+        if (data && Array.isArray(data.patients)) {
+          setPatients(data.patients);
+        } else {
+          throw new Error('Data format is incorrect');
+        }
+      })
       .catch(error => console.error('Error fetching patient data:', error));
   }, []);
 
