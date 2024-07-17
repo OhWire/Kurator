@@ -21,67 +21,67 @@ CREATE TABLE IF NOT EXISTS Stammdaten (
   zimmernummer VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Diagnoses (
+CREATE TABLE IF NOT EXISTS Diagnosen (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   diagnosis TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Medications (
+CREATE TABLE IF NOT EXISTS Medikamente (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   name TEXT,
   dose TEXT,
   duration TEXT,
   frequency TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Allergies (
+CREATE TABLE IF NOT EXISTS Allergien (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   type TEXT,
   intensity TEXT,
   treatment TEXT,
   details TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS ImportantInfo (
+CREATE TABLE IF NOT EXISTS WichtigeInformationen (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   info TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Therapies (
+CREATE TABLE IF NOT EXISTS Therapien (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   therapy TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Categories (
+CREATE TABLE IF NOT EXISTS Kategorien (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   name TEXT,
   intensity TEXT,
   details TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Evaluation (
+CREATE TABLE IF NOT EXISTS Evaluationen (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   name TEXT,
   frequency TEXT,
   notes TEXT,
   responsible TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS GoalsAndMeasures (
+CREATE TABLE IF NOT EXISTS ZieleUndMassnahmen (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   name TEXT,
@@ -89,19 +89,19 @@ CREATE TABLE IF NOT EXISTS GoalsAndMeasures (
   measures TEXT,
   responsibilities TEXT,
   status TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Management (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   management TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Nurse (
+CREATE TABLE IF NOT EXISTS Pflegekraft (
   id INT PRIMARY KEY AUTO_INCREMENT,
   patient_id INT,
   nurse TEXT,
-  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id)
+  FOREIGN KEY (patient_id) REFERENCES Stammdaten(id) ON DELETE CASCADE
 );
