@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const PatientList = () => {
   const [patients, setPatients] = useState([]);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch('http://18.184.167.92:3001/patients')
@@ -16,22 +15,14 @@ const PatientList = () => {
         return response.json();
       })
       .then(data => {
-        console.log('Fetched data:', data); // Debugging Log
         if (data && Array.isArray(data.patients)) {
           setPatients(data.patients);
         } else {
           throw new Error('Data format is incorrect');
         }
       })
-      .catch(error => {
-        console.error('Error fetching patient data:', error);
-        setError(error.message);
-      });
+      .catch(error => console.error('Error fetching patient data:', error));
   }, []);
-
-  if (error) {
-    return <div>Fehler: {error}</div>;
-  }
 
   return (
     <div className="z-20 p-6 pb-20 h-screen flex flex-col rounded-xl overflow-y-auto custom-scrollbar-container custom-scrollbar bg-opacity-80">
