@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PatientItem from './PatientItem';
 import { CiFilter, CiCirclePlus } from "react-icons/ci";
 import { Link } from 'react-router-dom';
-import { fetchPatients } from './actions'; // Beispiel Aktion zum Abrufen von Patienten
+import { fetchPatients } from './action'; // Beispiel Aktion zum Abrufen von Patienten
 
 const PatientList = () => {
   const dispatch = useDispatch();
